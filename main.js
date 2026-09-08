@@ -114,28 +114,6 @@ const PROJECTS = {
     ],
   },
 
-  "ieee-chipathon": {
-    title: "IEEE_CHIPATHON.TXT — NOTEPAD.EXE",
-    noMedia: true,
-    sections: [
-      {
-        heading: "In Progress: 2-Channel Time-Interleaved ADC",
-        body: "This project is a 2-channel time-interleaved ADC I'm building with my team (Aevulog) for the IEEE Chipathon, on GF180MCU. We run two 8-bit SAR ADCs side by side, each sampling at 25 MS/s, and stagger their timing to hit 50 MS/s combined.",
-      },
-      {
-        heading: "",
-        body: "Through the Chipathon I'm building on my analog design background by diving deeper into full-chip integration, specifically how digital calibration logic has to work with analog blocks in real time.",
-      },
-      {
-        isHtml: true,
-        heading: "Links",
-        bullets: [
-          "<a href='https://github.com/rcyaon/chipathon-2026-ti-adc'>GitHub repository</a>",
-        ],
-      },
-    ],
-  },
-
   favorites: {
     title: "FAVORITES.TXT — NOTEPAD.EXE",
     noMedia: true,
