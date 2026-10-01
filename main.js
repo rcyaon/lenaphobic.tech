@@ -75,7 +75,7 @@ const PROJECTS = {
   },
 
   "brokaw-bandgap-ptat": {
-    title: "TINY_TAPEOUT.TXT — NOTEPAD.EXE",
+    title: "TINY_TAPEOUTS.TXT — NOTEPAD.EXE",
     sections: [
       {
         imageSide: true,
