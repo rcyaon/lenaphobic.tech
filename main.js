@@ -31,7 +31,7 @@ const TERMINAL_PROJECTS = new Set(["more-work", "work-exp"]);
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
   "chip-design": {
-    title: "Chip_design.TXT — NOTEPAD.EXE",
+    title: "IC_PROJECT_TEAM.TXT — NOTEPAD.EXE",
     images: [
       { src: "images/IMG_9642.JPG", alt: "Chip design photo 1" },
       { src: "images/IMG_9643.JPG", alt: "Chip design photo 2" },
