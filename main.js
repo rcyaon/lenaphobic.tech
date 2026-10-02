@@ -114,6 +114,30 @@ const PROJECTS = {
     ],
   },
 
+  chipalooza: {
+    title: "CHIPALOOZA.TXT — NOTEPAD.EXE",
+    noMedia: true,
+    sections: [
+      {
+        heading: "Bidirectional Level Shifter",
+        body:
+          "A 4-channel level shifter that passes signals back and forth between 1.2V and 3.3V, on the IHP SG13CMOS5L open-source PDK. Basically a TI SN74LVC8T245, except it lives inside the chip.",
+      },
+      {
+        heading: "",
+        body:
+          "The tricky part of going both ways is making sure the two sides never fight over the same wire. So each driver lets go right away but waits about 2 ns before grabbing on. There's also a test mode that loops the whole thing into a ring oscillator, divided down by 16 so you can actually measure it. Drawn up in xschem and laid out in KLayout.",
+      },
+      {
+        heading: "Links",
+        bullets: [
+          "<a href='https://github.com/rcyaon/bidir-level-shifter'>GitHub repository</a>",
+          "<a href='https://rcyaon.github.io/bidir-level-shifter/'>Layout viewer</a>",
+        ],
+      },
+    ],
+  },
+
   favorites: {
     title: "FAVORITES.TXT — NOTEPAD.EXE",
     noMedia: true,
@@ -172,6 +196,17 @@ const PROJECTS = {
     title: "TERMINAL.EXE",
     noMedia: true,
     sections: [
+      {
+        variant: "panel",
+        panelHeadingStyle: "band",
+        treeBlocks: true,
+        heading: "‎ Itera",
+        blocks: [
+          {
+            heading: "Analog IC Engineering Intern (currently)",
+          },
+        ],
+      },
       {
         variant: "panel",
         panelHeadingStyle: "band",
