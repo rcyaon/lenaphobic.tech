@@ -75,7 +75,7 @@ const PROJECTS = {
   },
 
   "brokaw-bandgap-ptat": {
-    title: "TINY_TAPEOUT.TXT — NOTEPAD.EXE",
+    title: "TINY_TAPEOUTS.TXT — NOTEPAD.EXE",
     sections: [
       {
         imageSide: true,
@@ -173,8 +173,8 @@ const PROJECTS = {
 
 <h3>Music</h3>
 
-<p>Greg Freeman, I Looked Out </p>
-<img src="https://cdn.sonemic.net/i/600/s/a2d6f08bfb5ec1033204639a0e25e3a0/10515635/greg-freeman-i-looked-out-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
+<p>my bloody valentine, loveless</p>
+<img src="https://cdn.sonemic.net/i/600/s/47da1d4284997ca321af967068f34d7b/11569981/my-bloody-valentine-loveless-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 <br>
 
 <p>caroline, caroline 2</p>
