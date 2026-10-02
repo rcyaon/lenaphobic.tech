@@ -31,7 +31,7 @@ const TERMINAL_PROJECTS = new Set(["more-work", "work-exp"]);
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
   "chip-design": {
-    title: "IC_PROJECT_TEAM.TXT — NOTEPAD.EXE",
+    title: "PROJECT_TEAM_EXP.TXT — NOTEPAD.EXE",
     images: [
       { src: "images/IMG_9642.JPG", alt: "Chip design photo 1" },
       { src: "images/IMG_9643.JPG", alt: "Chip design photo 2" },
@@ -40,7 +40,7 @@ const PROJECTS = {
     sections: [
       {
         heading: "",
-        body: "On Cornell's all-undergrad analog team, we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180 nm. No one was going to hand us the design files, so we figured it out ourselves, working through Cadence Virtuoso and a lot of shared notes. One of the only undergraduate teams in the country doing this, and it worked.",
+        body: "I was on Cornell Custom Silicon Systems (C2S2), a student-run chip design team. I worked on the analog subteam, where we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180 nm. No one was going to hand us the design files, so we figured it out ourselves, working through Cadence Virtuoso and a lot of shared notes. One of the only undergraduate teams in the country doing this, and it worked.",
       },
       {
         heading: "",
