@@ -175,7 +175,7 @@ const PROJECTS = {
 
 <p>	You'll Never Get to Heaven, Images</p>
 <img src="https://cdn.sonemic.net/i/600/s/672ae1159e40363ca5cf097ac8ab0416/12815635/youll-never-get-to-heaven-images-Cover-Art.png" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
-<br>s
+<br>
 
 <p>caroline, caroline 2</p>
 <img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
