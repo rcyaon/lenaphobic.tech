@@ -1174,7 +1174,7 @@ body {
     top: 340px;
     left: 170px;
     width: 600px;
-    height: 424px !important;
+    height: 438px !important;
     z-index: 50;
 }
 
@@ -1334,6 +1334,7 @@ body {
     align-items: center;
     justify-content: flex-end;
     gap: 10px;
+    margin-top: 24px;
     margin-bottom: 0;
     font-size: 11px;
     font-weight: 600;
