@@ -31,7 +31,7 @@ const TERMINAL_PROJECTS = new Set(["more-work", "work-exp", "recognitions"]);
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
   "chip-design": {
-    title: "PROJECT_TEAM_EXP.TXT — NOTEPAD.EXE",
+    title: "SAR_ADC.TXT — NOTEPAD.EXE",
     images: [
       { src: "images/IMG_9642.JPG", alt: "Chip design photo 1" },
       { src: "images/IMG_9643.JPG", alt: "Chip design photo 2" },
@@ -57,7 +57,7 @@ const PROJECTS = {
     ],
   },
   drone: {
-    title: "Drone_development.TXT — NOTEPAD.EXE",
+    title: "DRONE.TXT — NOTEPAD.EXE",
     images: [{ src: "images/DylanV2.jpg", alt: "Drone project", fit: "cover" }],
     sections: [
       {
@@ -1470,8 +1470,8 @@ function layoutProjectIconCluster() {
   ];
   if (icons.length === 0) return;
 
-  const gap = 22;
-  const rowGap = 22;
+  const gap = 10;
+  const rowGap = 8;
   const surfW = surface.clientWidth;
   const surfH = surface.clientHeight;
   if (surfW < 48 || surfH < 48) return;
@@ -1490,8 +1490,8 @@ function layoutProjectIconCluster() {
   const totalClusterHeight =
     rowHeights.reduce((sum, h) => sum + h, 0) +
     rowGap * Math.max(0, rows.length - 1);
-  const topPad = 10;
-  const bottomPad = 16;
+  const topPad = 4;
+  const bottomPad = 8;
   // Icons are absolutely positioned, so reserve room below the last row when scrolling.
   surface.style.minHeight = `${topPad + totalClusterHeight + bottomPad}px`;
   let y = Math.max(topPad, Math.floor((surfH - totalClusterHeight) / 2));
