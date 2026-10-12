@@ -31,7 +31,7 @@ const TERMINAL_PROJECTS = new Set(["more-work", "work-exp", "recognitions"]);
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
   "chip-design": {
-    title: "SAR_ADC.TXT — NOTEPAD.EXE",
+    title: "ADC_TAPEOUT.TXT — NOTEPAD.EXE",
     images: [
       { src: "images/IMG_9642.JPG", alt: "Chip design photo 1" },
       { src: "images/IMG_9643.JPG", alt: "Chip design photo 2" },
@@ -57,7 +57,7 @@ const PROJECTS = {
     ],
   },
   drone: {
-    title: "DRONE.TXT — NOTEPAD.EXE",
+    title: "MOTION_STUDIO.TXT — NOTEPAD.EXE",
     images: [{ src: "images/DylanV2.jpg", alt: "Drone project", fit: "cover" }],
     sections: [
       {
@@ -75,7 +75,7 @@ const PROJECTS = {
   },
 
   "brokaw-bandgap-ptat": {
-    title: "TINY_TAPEOUTS.TXT — NOTEPAD.EXE",
+    title: "TINY_TAPEOUT.TXT — NOTEPAD.EXE",
     sections: [
       {
         imageSide: true,
@@ -181,12 +181,9 @@ const PROJECTS = {
 <img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
 <br>
 
-<p>Water From Your Eyes, It's a Beautiful Place</p>
-<img src ="https://cdn.sonemic.net/i/600/s/943c26e0637001270dea6ffbb94691b8/14042710/water-from-your-eyes-its-a-beautiful-place-Cover-Art.png" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
+<p>Mouseatouille, DJ Set</p>
+<img src="https://f4.bcbits.com/img/a3027763236_5.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
 <br>
-
-<p>what is your name?, the now now and never</p>
-<img src="https://cdn.sonemic.net/i/600/s/a21a436204b531f720db6eccb32379a4/10901440/what-is-your-name-the-now-now-and-never-cover-art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
 `,
       },
     ],
