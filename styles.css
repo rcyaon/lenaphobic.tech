@@ -1344,6 +1344,12 @@ body {
 .about-webring a,
 .about-webring a:visited {
     color: #1a1a1a;
+    text-decoration: none;
+}
+
+.about-webring a:first-child,
+.about-webring a:last-child,
+.about-webring a:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
 }
