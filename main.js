@@ -26,7 +26,7 @@ const MIN_H = 160;
  */
 
 /** Projects rendered with the terminal layout (wide panel, ls bands, tree rows). */
-const TERMINAL_PROJECTS = new Set(["more-work", "work-exp"]);
+const TERMINAL_PROJECTS = new Set(["more-work", "work-exp", "recognitions"]);
 
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
@@ -203,7 +203,7 @@ const PROJECTS = {
         heading: "‎ Itera",
         blocks: [
           {
-            heading: "Analog IC Engineering Intern (currently)",
+            heading: "Analog IC Engineer (currently part-time)",
           },
         ],
       },
@@ -253,10 +253,6 @@ const PROJECTS = {
         heading: "‎ programs/technical",
         blocks: [
           {
-            heading: "Google Code Next",
-            body: "Selected for Google's creative coding program: algorithmic composition and audio synthesis in JavaScript, taught by Google engineers.",
-          },
-          {
             heading: "MATLAB Ambassador",
             body: "Paid work delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.",
           },
@@ -269,6 +265,9 @@ const PROJECTS = {
               "SureStart Virtual AI Learning Program with an Applied Deep Learning Focus",
             body: "Deep learning fundamentals: neural networks, CNNs, GANs, optimization, and model evaluation with Python and TensorFlow.",
           },
+          {
+            heading: "Stanford Engineering Research Introductions Scholar",
+          },
         ],
       },
       {
@@ -277,6 +276,10 @@ const PROJECTS = {
         treeBlocks: true,
         heading: "‎ programs/venture",
         blocks: [
+          {
+            heading: "Collide Capital Venture Scout",
+            body: "Sourcing and diligencing pre-seed to series A deep tech startups. Learning how to VC at an early-stage VC. If you're building something, let's chat!",
+          },
           {
             heading: "Dorm Room Fund Blueprint Investor Track",
             body: "Selected as 1 of 15 nationwide for a fellowship on evaluating early-stage startups from an investor's lens.",
@@ -309,6 +312,13 @@ const PROJECTS = {
           src: "images/blot.JPG",
         },
       },
+    ],
+  },
+
+  recognitions: {
+    title: "TERMINAL.EXE",
+    noMedia: true,
+    sections: [
       {
         isHtml: true,
         variant: "panel",
@@ -339,6 +349,42 @@ const PROJECTS = {
             bullets: [
               "ML race-strategy project using synthetic sensor data and 3D-printed model cars.",
             ],
+          },
+        ],
+      },
+      {
+        variant: "panel",
+        panelHeadingStyle: "band",
+        treeBlocks: true,
+        heading: "‎ scholarships",
+        blocks: [
+          {
+            heading: "ASML Innovators Scholarship",
+            body: "1 of 20 students nationwide awarded $5,000.",
+          },
+          {
+            heading: "Google Scholar",
+            body: "Awarded the Google Generation Scholarship as 1 of 50 recipients in North America. Alumna of Code Next Connect, Google's creative coding program: learned algorithmic composition and audio synthesis in JavaScript, taught by Google engineers.",
+          },
+          {
+            heading: "Amazon Future Engineer",
+            body: "Awarded $40,000 + SDE internship @ Amazon.",
+          },
+          {
+            heading: "CrowdStrike NextGen Scholarship",
+            body: "1 of 8 nationwide awarded $10,000.",
+          },
+          {
+            heading: "Stantec Equity and Diversity Scholarship",
+            body: "$4,500 + EE internship.",
+          },
+          {
+            heading: "Thrive Scholar",
+            body: "6-year college and career mentorship program. Within the cohort, selected by Citadel and Deloitte as a scholarship recipient.",
+          },
+          {
+            heading: "Meinig Family Cornell (transferred) National Scholar",
+            body: "Awarded to less than 2% of students for leadership with a $4,000/year scholarship.",
           },
         ],
       },
@@ -1445,6 +1491,9 @@ function layoutProjectIconCluster() {
     rowHeights.reduce((sum, h) => sum + h, 0) +
     rowGap * Math.max(0, rows.length - 1);
   const topPad = 10;
+  const bottomPad = 16;
+  // Icons are absolutely positioned, so reserve room below the last row when scrolling.
+  surface.style.minHeight = `${topPad + totalClusterHeight + bottomPad}px`;
   let y = Math.max(topPad, Math.floor((surfH - totalClusterHeight) / 2));
 
   rows.forEach((row, rowIndex) => {
@@ -1453,6 +1502,8 @@ function layoutProjectIconCluster() {
       totalW += btn.offsetWidth;
       if (i < row.length - 1) totalW += gap;
     });
+    // Pad a short last row so it starts at the left column instead of centering.
+    totalW += (colsPerRow - row.length) * (cellW + gap);
     let left = Math.floor((surfW - totalW) / 2);
     const rowHeight = rowHeights[rowIndex];
 

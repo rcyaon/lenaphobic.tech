@@ -293,7 +293,7 @@ body {
 .file-explorer {
     top: 15px;
     left: 20px;
-    width: 420px;
+    width: 440px;
     height: 300px;
     z-index: 10;
 }
@@ -1174,7 +1174,7 @@ body {
     top: 340px;
     left: 170px;
     width: 620px;
-    height: 450px !important;
+    height: 425px !important;
     z-index: 50;
 }
 
