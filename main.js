@@ -380,8 +380,8 @@ const PROJECTS = {
             body: "6-year college and career mentorship program. Within the cohort, selected by Citadel and Deloitte as a scholarship recipient.",
           },
           {
-            heading: "Meinig Family Cornell (transferred) National Scholar",
-            body: "Awarded to less than 2% of students for leadership with a $4,000/year scholarship.",
+            heading: "Meinig Family Cornell National Scholar (transferred to Olin)",
+            body: "Awarded to less than 2% of students at Cornell for leadership with a $4,000/year scholarship.",
           },
         ],
       },
