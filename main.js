@@ -31,16 +31,16 @@ const TERMINAL_PROJECTS = new Set(["more-work", "work-exp", "recognitions"]);
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
   "chip-design": {
-    title: "ADC_TAPEOUT.TXT — NOTEPAD.EXE",
+    title: "TSMC_180NM_TAPEOUTS.TXT — NOTEPAD.EXE",
     images: [
       { src: "images/IMG_9642.JPG", alt: "Chip design photo 1" },
       { src: "images/IMG_9643.JPG", alt: "Chip design photo 2" },
-      { src: "images/firstRender.png", alt: "Chip design photo 3" },
+      { src: "images/sar_adc_die.jpg", alt: "Packaged SAR ADC die with wire bonds, and close-up of the die", fit: "wide" },
     ],
     sections: [
       {
         heading: "",
-        body: "I was on Cornell Custom Silicon Systems (C2S2), a student-run chip design team. I worked on the analog subteam, where we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180 nm. No one was going to hand us the design files, so we figured it out ourselves, working through Cadence Virtuoso and a lot of shared notes. One of the only undergraduate teams in the country doing this, and it worked.",
+        body: "I was on Cornell Custom Silicon Systems (C2S2), a student-run chip design team. I worked on the analog subteam, where we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180 nm. No one was going to hand us the design files, so we figured it out ourselves, working through Cadence Virtuoso and a lot of shared notes. One of the only <a href='https://asicnetwork.net/'>undergraduate teams in the country doing this</a>, and it worked.",
       },
       {
         heading: "",
@@ -75,7 +75,7 @@ const PROJECTS = {
   },
 
   "brokaw-bandgap-ptat": {
-    title: "TINY_TAPEOUT.TXT — NOTEPAD.EXE",
+    title: "TINY_TAPEOUTS.TXT — NOTEPAD.EXE",
     sections: [
       {
         imageSide: true,
@@ -116,7 +116,10 @@ const PROJECTS = {
 
   chipalooza: {
     title: "CHIPALOOZA.TXT — NOTEPAD.EXE",
-    noMedia: true,
+    images: [
+      { src: "images/level_shifter_closeup.png", alt: "3D close-up render of the level shifter metal layers" },
+      { src: "images/level_shifter_top_down.png", alt: "Top-down render of the level shifter layout", fit: "wide" },
+    ],
     sections: [
       {
         heading: "Bidirectional Level Shifter",
@@ -171,19 +174,6 @@ const PROJECTS = {
 <img src="https://www.hollywoodreporter.com/wp-content/uploads/2023/01/202310362_1-H-2023.jpg?w=1296&h=730&crop=1" width="300" style="border: 1px solid #6f6f6f;" alt="">
 <br>
 
-<h3>Music</h3>
-
-<p>	You'll Never Get to Heaven, Images</p>
-<img src="https://cdn.sonemic.net/i/600/s/672ae1159e40363ca5cf097ac8ab0416/12815635/youll-never-get-to-heaven-images-Cover-Art.png" width="200" height="200" style="border: 1px solid #6f6f6f;" alt="">  
-<br>
-
-<p>caroline, caroline 2</p>
-<img src="https://cdn.sonemic.net/i/600/w/443661b587a1cda3992eb689d25cc0c7/13248275/caroline-caroline-2-Cover-Art.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
-<br>
-
-<p>Mouseatouille, DJ Set</p>
-<img src="https://f4.bcbits.com/img/a3027763236_5.jpg" width="200" height="200" style="border: 1px solid #6f6f6f;" alt=""> 
-<br>
 `,
       },
     ],
