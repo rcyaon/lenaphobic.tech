@@ -148,7 +148,6 @@ const PROJECTS = {
       {
         isHtml: true,
         body: `<p><i>(In no order)</i></p>
-        <h3>Film</h3>
 
 <p>Alice Rohrwacher, La Chimera</p>
 <img src="https://live-production.wcms.abc-cdn.net.au/958e48b10996283cef81d6fc724c8628?impolicy=wcms_crop_resize&cropH=1841&cropW=2762&xPos=656&yPos=319&width=862&height=575" width="300" style="border: 1px solid #6f6f6f;" alt="">
