@@ -1625,128 +1625,6 @@ function wireProjectOpeners() {
   });
 }
 
-function wireSpotifyNowPlaying() {
-  const statusEl = document.getElementById("spotifyStatusText");
-  const artworkEl = document.getElementById("spotifyArtwork");
-  const trackEl = document.getElementById("spotifyTrackText");
-  const artistEl = document.getElementById("spotifyArtistText");
-  if (!statusEl || !artworkEl || !trackEl || !artistEl) return;
-
-  const NOW_PLAYING_API_URL = "/api/now-playing";
-  const CACHE_KEY = "spotify:last-played";
-  let refreshTimer = null;
-  let hasLoadedAtLeastOnce = false;
-  let hasTrackData = false;
-
-  /** Last track we successfully rendered, kept so errors never blank the panel. */
-  function readCachedTrack() {
-    try {
-      const raw = localStorage.getItem(CACHE_KEY);
-      if (!raw) return null;
-      const data = JSON.parse(raw);
-      return data && (data.title || data.artist) ? data : null;
-    } catch (_) {
-      return null;
-    }
-  }
-
-  function writeCachedTrack(data) {
-    try {
-      localStorage.setItem(
-        CACHE_KEY,
-        JSON.stringify({
-          title: data.title || "",
-          artist: data.artist || "",
-          albumImageUrl: data.albumImageUrl || "",
-        }),
-      );
-    } catch (_) {
-      /* private mode / quota — cache is best effort */
-    }
-  }
-
-  function setStatus(text) {
-    statusEl.textContent = text;
-  }
-
-  /** Fall back to the cached track instead of showing an empty panel. */
-  function showFallback(message) {
-    const cached = hasTrackData ? null : readCachedTrack();
-    if (cached) setTrack(cached);
-    if (hasTrackData) setStatus("Last played");
-    else setStatus(message);
-  }
-
-  function setTrack(data) {
-    trackEl.textContent = data.title || "";
-    artistEl.textContent = data.artist || "";
-
-    if (data.albumImageUrl) {
-      artworkEl.src = data.albumImageUrl;
-      artworkEl.alt = data.title
-        ? `Album artwork for ${data.title}`
-        : "Album artwork";
-      artworkEl.hidden = false;
-    } else {
-      artworkEl.hidden = true;
-    }
-
-    hasTrackData = Boolean(data.title || data.artist || data.albumImageUrl);
-  }
-
-  async function loadNowPlaying() {
-    if (!hasLoadedAtLeastOnce && !hasTrackData) {
-      setStatus("Loading now playing...");
-    }
-    try {
-      const res = await fetch(NOW_PLAYING_API_URL);
-      const data = await res.json();
-      if (!res.ok) {
-        const baseMessage = data?.message || "Could not fetch Spotify status.";
-        const rateLimitHint =
-          data?.retryAfterSeconds &&
-          Number.isFinite(Number(data.retryAfterSeconds))
-            ? ` Retry in ~${Number(data.retryAfterSeconds)}s.`
-            : "";
-        showFallback(`${baseMessage}${rateLimitHint}`.trim());
-        hasLoadedAtLeastOnce = true;
-        return;
-      }
-      if (!data?.ok) {
-        showFallback(data?.message || "Spotify status unavailable.");
-        hasLoadedAtLeastOnce = true;
-        return;
-      }
-      if (data.title || data.artist || data.albumImageUrl) {
-        setStatus(data?.isPlaying ? "Now playing" : "Last played");
-        setTrack(data);
-        writeCachedTrack(data);
-      } else {
-        showFallback(data?.message || "No recent Spotify activity.");
-      }
-      hasLoadedAtLeastOnce = true;
-    } catch (_) {
-      showFallback("Network error while contacting Spotify.");
-      hasLoadedAtLeastOnce = true;
-    }
-  }
-
-  function startAutoRefresh() {
-    if (refreshTimer) clearInterval(refreshTimer);
-    refreshTimer = setInterval(loadNowPlaying, 20000);
-  }
-
-  // Paint the cached track first so the panel is never empty while loading.
-  const cached = readCachedTrack();
-  if (cached) {
-    setTrack(cached);
-    setStatus("Last played");
-  }
-
-  loadNowPlaying();
-  startAutoRefresh();
-}
-
 function initWindows() {
   windows().forEach((win) => {
     wireWindowControls(win);
@@ -1777,15 +1655,7 @@ document.addEventListener("DOMContentLoaded", () => {
   wireProjectModal();
   wireProjectOpeners();
   wireSkipLink();
-  wireSpotifyNowPlaying();
   updateLauncherState();
-
-  const spotifyWin = document
-    .getElementById("spotifyStatusText")
-    ?.closest(".window");
-  if (spotifyWin && !useSingleWindowMobileMode()) {
-    minimizeWindow(spotifyWin);
-  }
 
   requestAnimationFrame(() => {
     requestAnimationFrame(layoutProjectIconCluster);

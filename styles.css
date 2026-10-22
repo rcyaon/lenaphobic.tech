@@ -1419,49 +1419,6 @@ body {
     font-weight: 600;
 }
 
-/* Spotify Window */
-.spotify-window {
-    top: 280px;
-    right: 40px;
-    left: auto;
-    width: 280px !important;
-    height: 290px !important;
-    z-index: 25;
-}
-
-.spotify-content {
-    font-family: "IBM Plex Mono", monospace;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-.spotify-status {
-    margin: 0;
-    font-weight: 600;
-}
-
-.spotify-artwork {
-    display: block;
-    width: min(160px, 100%);
-    border: 1px solid #6f6f6f;
-    background: #eaeaea;
-    margin-top: 8px;
-}
-
-.spotify-track {
-    font-family: "IBM Plex Mono", monospace;
-    margin-top: 8px;
-    font-weight: 600;
-}
-
-.spotify-artist {
-    font-family: "IBM Plex Mono", monospace;
-    margin-top: 2px;
-}
-
 /* Window launcher (restore closed / minimized) */
 .window-launcher {
     position: fixed;
@@ -1652,13 +1609,6 @@ button:focus-visible,
     height: min(210px, 42vh) !important;
 }
 
-.desktop--mobile .spotify-window {
-    left: 12px;
-    right: 12px;
-    width: auto !important;
-    height: min(280px, 38vh) !important;
-}
-
 .desktop--mobile > .window {
     top: 0 !important;
     left: 0 !important;
@@ -1690,10 +1640,6 @@ button:focus-visible,
 
     .desktop--mobile .contact-window {
         height: min(200px, 44vh) !important;
-    }
-
-    .desktop--mobile .spotify-window {
-        height: min(240px, 36vh) !important;
     }
 
     .window-launcher {
