@@ -294,7 +294,7 @@ body {
     top: 40px;
     left: 35px;
     width: 410px;
-    height: 270px;
+    height: 290px;
     z-index: 10;
 }
 
@@ -1171,7 +1171,7 @@ body {
 
 /* Notepad Window — default stack above other chrome windows; JS bringToFront on load reinforces */
 .notepad-window {
-    top: 340px;
+    top: 360px;
     left: 170px;
     width: 600px;
     height: 420px !important;
@@ -1597,7 +1597,7 @@ button:focus-visible,
     right: 12px;
     width: auto !important;
     max-width: none;
-    height: min(300px, 40vh) !important;
+    height: min(340px, 45vh) !important;
 }
 
 .desktop--mobile .contact-window {
@@ -1627,11 +1627,11 @@ button:focus-visible,
 @media (max-width: 600px) {
     .desktop--mobile .file-explorer {
         top: 8px;
-        height: min(280px, 38vh) !important;
+        height: min(320px, 42vh) !important;
     }
 
     .desktop--mobile .notepad-window {
-        top: min(300px, 44vh);
+        top: min(340px, 48vh);
         height: min(
             420px,
             calc(100vh - var(--desktop-chrome-bottom) - 32px)
