@@ -189,7 +189,7 @@ const PROJECTS = {
         heading: "‎ Itera",
         blocks: [
           {
-            heading: "Analog IC Engineer (currently part-time)",
+            heading: "Analog IC Engineer (part-time, present)",
           },
         ],
       },
