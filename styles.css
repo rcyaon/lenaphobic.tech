@@ -311,7 +311,6 @@ body {
 }
 
 .file-explorer .project-icons-surface {
-    min-height: 200px;
 }
 
 .project-icons-surface {
@@ -2400,7 +2399,7 @@ button:focus-visible,
     opacity: 1;
 }
 
-/* Split row with its image on the left (Organizing Hackathons) */
+/* Split row with its image on the left (Hackathon Organizing) */
 @media (min-width: 561px) {
     .project-modal__section-split--image-left .project-modal__section-split-media {
         order: -1;
@@ -2455,14 +2454,14 @@ button:focus-visible,
 }
 
 .project-modal__body--more-work .project-modal__row[data-tag="community"]:hover {
-    background: #f1ecfa;
-    border-color: #c4b3e3;
+    background: #fbeaf0;
+    border-color: #e7b3c6;
 }
 
 .project-modal__body--more-work .project-modal__row[data-tag="community"]:hover .project-modal__row-tag {
-    background: #e3d9f5;
-    border-color: #a58fd3;
-    color: #4f3a85;
+    background: #f6d5e1;
+    border-color: #d68aa6;
+    color: #8a2f55;
 }
 
 /* Photo filling the cell beside the last program card */

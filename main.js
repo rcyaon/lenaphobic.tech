@@ -40,7 +40,7 @@ const PROJECTS = {
     sections: [
       {
         heading: "",
-        body: "I was on Cornell Custom Silicon Systems (C2S2), a student-run chip design team. I worked on the analog subteam, where we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180 nm. No one was going to hand us the design files, so we figured it out ourselves, working through Cadence Virtuoso and a lot of shared notes. One of the only <a href='https://asicnetwork.net/'>undergraduate teams in the country doing this</a>, and it worked.",
+        body: "I was on Cornell Custom Silicon Systems (C2S2), a student-run chip design team. I worked on the analog subteam, where we taped out a 4.44 MS/s 8-bit differential SAR ADC in TSMC 180 nm. No one was going to hand us the design files, so we figured it out ourselves, working through Cadence Virtuoso and a lot of shared notes. One of the only <a href='https://asicnetwork.net/'>undergraduate teams</a> in the country doing this, and it worked.",
       },
       {
         heading: "",
@@ -296,12 +296,12 @@ const PROJECTS = {
           },
           {
             tag: "venture",
-            heading: "Girls Into VC externship",
+            heading: "Girls Into VC Externship",
             body: "Externed with the CEO of upskill (\"the horizontal people-search layer for agents\") doing market research and helping out with client hiring work.",
           },
           {
             tag: "community",
-            heading: "Organizing Hackathons",
+            heading: "Hackathon Organizing",
             body: "Ran PCB design, JavaScript, and CNC workshops for K-12 students at FUTO Austin and Amazon Seattle through <a href='https://daysofservice.hackclub.com/'>Hack Club</a>, and led logistics for <a href=\"https://www.bigredhacks.com/\">BigRed//Hacks</a>.",
           },
           {
