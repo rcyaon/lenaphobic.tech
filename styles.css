@@ -294,7 +294,7 @@ body {
     top: 40px;
     left: 35px;
     width: 410px;
-    height: 290px;
+    height: 270px;
     z-index: 10;
 }
 
@@ -1174,7 +1174,7 @@ body {
     top: 360px;
     left: 170px;
     width: 600px;
-    height: 420px !important;
+    height: 440px !important;
     z-index: 50;
 }
 
@@ -1329,34 +1329,30 @@ body {
     line-height: 1.6;
 }
 
+/* Webring: small muted lowercase footer line (masonjwang.com / brookejoseph.com) */
 .about-webring {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 24px;
+    align-items: baseline;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 20px;
     margin-bottom: 0;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: #6f6f6f;
 }
 
 .about-webring a,
 .about-webring a:visited {
-    color: #1a1a1a;
+    color: #6f6f6f;
     text-decoration: none;
 }
 
-.about-webring a:first-child,
-.about-webring a:last-child,
 .about-webring a:hover {
+    color: #1a1a1a;
     text-decoration: underline;
     text-underline-offset: 3px;
-}
-
-.about-webring a:hover {
-    color: #6f6f6f;
 }
 
 .work-entry__title {
@@ -1648,4 +1644,865 @@ button:focus-visible,
         min-height: var(--launcher-height);
         padding: 4px 8px;
     }
+}
+
+.about-cta {
+    margin-top: 0;
+}
+
+
+/* Tighter About spacing so the notepad window can be shorter */
+.notepad-content .profile-section {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.notepad-content .about-list li {
+    margin-bottom: 4px;
+}
+
+.about-welcome {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: #1a1a1a;
+}
+
+/* Numbered headings (masonjwang.com inspo) */
+.about-welcome {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.about-welcome--section {
+    margin-top: 19px;
+    margin-bottom: 4px;
+}
+
+.about-num {
+    font-weight: 400;
+    color: #6f6f6f;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Favorites link with star icon (masonjwang.com inspo) */
+.link-button--star {
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.link-button--star .link-button__text {
+    padding-bottom: 1px;
+    border-bottom: 1px dotted #6f6f6f;
+    background: linear-gradient(#1a1a1a, #1a1a1a) left bottom / 0% 1px no-repeat;
+    transition: background-size 0.3s ease-out;
+}
+
+.link-button__star {
+    display: inline-block;
+    margin-left: 3px;
+    vertical-align: -1px;
+    color: #6f6f6f;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.link-button--star:hover {
+    color: #1a1a1a;
+}
+
+.link-button--star:hover .link-button__text {
+    background-size: 100% 1px;
+}
+
+.link-button--star:hover .link-button__star {
+    color: #1a1a1a;
+    transform: rotate(72deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .link-button--star .link-button__text,
+    .link-button__star {
+        transition: none;
+    }
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+/* About window links share the "favorites" underline: dotted at rest, solid sweep on hover (masonjwang.com inspo) */
+#notepad a,
+#notepad a:visited,
+#notepad .link-button:not(.link-button--star) {
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px dotted #6f6f6f;
+    background: linear-gradient(#1a1a1a, #1a1a1a) left bottom / 0% 1px no-repeat;
+    transition: background-size 0.3s ease-out, color 0.3s;
+}
+
+#notepad a:hover,
+#notepad .link-button:not(.link-button--star):hover {
+    color: #1a1a1a;
+    text-decoration: none;
+    background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #notepad a,
+    #notepad .link-button {
+        transition: none;
+    }
+}
+
+/* Photo stretches to the text column so its bottom lines up with the last line ("guitar.") */
+.notepad-content .profile-image {
+    height: auto;
+    align-self: stretch;
+}
+
+.notepad-content .info-section {
+    /* Trim the leading under the last line so the photo ends at the text baseline */
+    margin-bottom: -5px;
+}
+
+/* Webring arrows stay plain; only the name is underlined */
+#notepad .about-webring a:first-child,
+#notepad .about-webring a:last-child {
+    border-bottom: 0;
+    background: none;
+}
+
+/* Row list for Awards / Scholarships (masonjwang.com "some things i've built") */
+.project-modal__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.project-modal__row {
+    padding: 10px 0;
+}
+
+.project-modal__row + .project-modal__row {
+    border-top: 1px dashed #b0b0b0;
+}
+
+.project-modal__row:first-child {
+    padding-top: 2px;
+}
+
+.project-modal__row:last-child {
+    padding-bottom: 2px;
+}
+
+.project-modal__row-title {
+    display: block;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+.project-modal__row-desc {
+    margin: 2px 0 0;
+    color: #6f6f6f;
+    line-height: 1.6;
+}
+
+.project-modal__experience-panel-body--rows .project-modal__row-desc {
+    line-height: 1.6;
+}
+
+/* Awards / Scholarships: band heading toggles its entries (link styled like "favorites") */
+.project-modal__panel-toggle {
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+
+.project-modal__panel-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.project-modal__panel-details:not([open]) > .project-modal__panel-toggle {
+    margin-bottom: 0;
+}
+
+.project-modal__body--more-work .project-modal__panel-details[open] > .project-modal__panel-content > .project-modal__experience-panel-body {
+    margin-top: var(--mw-gap);
+}
+
+.project-modal__panel-toggle-text {
+    text-decoration: underline;
+}
+
+.project-modal__panel-toggle:hover .project-modal__panel-toggle-text {
+    color: #6f6f6f;
+}
+
+.project-modal__panel-toggle-icon {
+    display: inline-block;
+    margin-left: 6px;
+    color: #6f6f6f;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.project-modal__panel-toggle:hover .project-modal__panel-toggle-icon {
+    color: #1a1a1a;
+}
+
+.project-modal__panel-toggle:hover .project-modal__panel-toggle-icon,
+.project-modal__panel-details[open] .project-modal__panel-toggle-icon {
+    transform: rotate(72deg);
+}
+
+.project-modal__panel-details[open] .project-modal__panel-toggle-icon {
+    color: #1a1a1a;
+}
+
+.project-modal__panel-toggle:focus-visible {
+    outline: 2px solid #1a1a1a;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-modal__panel-toggle-icon {
+        transition: none;
+    }
+}
+
+.project-modal__body--more-work .project-modal__panel-toggle::before {
+    margin-right: 1ch;
+}
+
+.project-modal__panel-toggle-icon {
+    vertical-align: -1px;
+}
+
+/* Miscellaneous group: space between its projects */
+.project-modal__group-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mw-gap, 10px);
+}
+
+.project-modal__body--more-work .project-modal__panel-details[open] > .project-modal__panel-content > .project-modal__group-body {
+    margin-top: var(--mw-gap);
+}
+
+/* Et cetera: lighter lines */
+.project-modal__body--more-work .project-modal__panel-heading--band {
+    border-color: #b8b8b8;
+}
+
+.project-modal__body--more-work .project-modal__tree-branch {
+    color: #c2c2c2;
+}
+
+.project-modal__body--more-work .project-modal__tree-gutter--bar::before,
+.project-modal__body--more-work .project-modal__tree-branch:not(.project-modal__tree-branch--end)::before {
+    background-color: #c2c2c2;
+}
+
+.project-modal__body--more-work .project-modal__row + .project-modal__row {
+    border-top-color: #d2d2d2;
+}
+
+/* Star icon used for the favorites link and et cetera toggles */
+.project-modal__panel-toggle-icon {
+    display: inline-block;
+    margin-left: 6px;
+    vertical-align: -1px;
+}
+
+/* ── Et cetera: one consistent look for every section ── */
+.project-modal__body--more-work .project-modal__experience-panel-body--rows {
+    gap: 0;
+}
+
+.project-modal__body--more-work .project-modal__row-title {
+    font-size: 12px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.project-modal__body--more-work .project-modal__row-desc,
+.project-modal__body--more-work .project-modal__row-list {
+    font-size: 12px;
+    color: #6f6f6f;
+    line-height: 1.6;
+}
+
+.project-modal__body--more-work .project-modal__row-list {
+    margin: 2px 0 0;
+    padding-left: 16px;
+    list-style: disc;
+}
+
+.project-modal__body--more-work .project-modal__row-list li {
+    margin: 0 0 3px;
+    line-height: 1.6;
+}
+
+.project-modal__body--more-work .project-modal__row-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Sub-labels inside a group (globalfoundries / amazon, technical / venture) */
+.project-modal__group-body .project-modal__panel-heading:not(.project-modal__panel-heading--band) {
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: #6f6f6f;
+    line-height: 1.6;
+}
+
+.project-modal__group-body > .project-modal__experience-panel {
+    gap: 4px;
+}
+
+.project-modal__group-body > .project-modal__experience-panel + .project-modal__experience-panel {
+    margin-top: 10px;
+}
+
+/* Miscellaneous projects: same title/description look as the rows */
+.project-modal__body--more-work .project-modal__section-split-copy {
+    gap: 2px;
+}
+
+.project-modal__body--more-work .project-modal__section-split-copy h3 {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.6;
+    color: #1a1a1a;
+}
+
+.project-modal__body--more-work .project-modal__section-split-copy p {
+    font-size: 12px;
+    color: #6f6f6f;
+    line-height: 1.6;
+}
+
+.project-modal__body--more-work .project-modal__section-split-copy > h3 + p {
+    margin-top: 0;
+}
+
+.project-modal__group-body > .project-modal__section-split + .project-modal__section-split {
+    margin-top: 0;
+    padding-top: 10px;
+    border-top: 1px dashed #d2d2d2;
+}
+
+/* Equal space under every et cetera heading */
+.project-modal__body--more-work .project-modal__panel-details[open] > .project-modal__panel-content > .project-modal__experience-panel-body--rows {
+    margin-top: calc(var(--mw-gap) - 3px);
+}
+
+.project-modal__group-body > .project-modal__section-split:first-child {
+    margin-top: -1px;
+}
+
+/* ── Et cetera: match the other NOTEPAD.EXE folders ── */
+/* 680px keeps each miscellaneous description about as tall as its image. */
+.project-modal__panel--more-work {
+    width: min(680px, 100%);
+}
+
+.project-modal__body.project-modal__body--more-work {
+    line-height: 1.75;
+    gap: 0;
+}
+
+/* Section headings: plain small caps like "LINKS", no gray band / "ls" prefix */
+.project-modal__body--more-work .project-modal__panel-heading--band {
+    padding: 0;
+    background: none;
+    border: 0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #1a1a1a;
+}
+
+.project-modal__body--more-work .project-modal__panel-heading--band::before {
+    content: none;
+}
+
+.project-modal__body--more-work .project-modal__panel-toggle .project-modal__panel-toggle-text {
+    text-decoration: none;
+}
+
+.project-modal__body--more-work .project-modal__panel-toggle:hover .project-modal__panel-toggle-text {
+    color: #1a1a1a;
+    text-decoration: underline;
+}
+
+/* Thin solid rule between sections, like the image divider in other folders */
+.project-modal__body--more-work > .project-modal__experience-panel + .project-modal__experience-panel {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #d0d0d0;
+}
+
+/* Dark body text and no dashed rules, like other folders */
+.project-modal__body--more-work .project-modal__row-desc,
+.project-modal__body--more-work .project-modal__row-list,
+.project-modal__body--more-work .project-modal__section-split-copy p {
+    color: #1a1a1a;
+    line-height: 1.75;
+}
+
+.project-modal__body--more-work .project-modal__row-list li {
+    line-height: 1.75;
+}
+
+.project-modal__body--more-work .project-modal__row + .project-modal__row,
+.project-modal__group-body > .project-modal__section-split + .project-modal__section-split {
+    border-top: 0;
+}
+
+.project-modal__body--more-work .project-modal__row {
+    padding: 0;
+}
+
+.project-modal__body--more-work .project-modal__row + .project-modal__row {
+    margin-top: 12px;
+}
+
+.project-modal__group-body > .project-modal__section-split + .project-modal__section-split {
+    padding-top: 0;
+    margin-top: 14px;
+}
+
+/* ── Et cetera: cards (work exp, programs) ── */
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #d0d0d0;
+    background: #fafafa;
+    padding: 10px 12px;
+}
+
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row + .project-modal__row {
+    margin-top: 8px;
+}
+
+.project-modal__row-tag {
+    text-transform: uppercase;
+    margin-top: 8px;
+    padding: 0 6px;
+    border: 1px solid #d0d0d0;
+    background: #fff;
+    color: #6f6f6f;
+    font-size: 10px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+}
+
+/* ── Et cetera: file listing (awards) ── */
+.project-modal__files-prompt,
+.project-modal__files-count {
+    color: #6f6f6f;
+    font-size: 11px;
+}
+
+.project-modal__files-prompt {
+    margin-bottom: 6px;
+}
+
+.project-modal__files-count {
+    margin-top: 8px;
+    color: #9a9a9a;
+}
+
+.project-modal__body--more-work .project-modal__rows--files .project-modal__row {
+    position: relative;
+    padding-left: 22px;
+}
+
+.project-modal__body--more-work .project-modal__rows--files .project-modal__row + .project-modal__row {
+    margin-top: 6px;
+}
+
+.project-modal__rows--files .project-modal__row::before {
+    content: "├─";
+    position: absolute;
+    left: 0;
+    color: #9a9a9a;
+}
+
+.project-modal__rows--files .project-modal__row:last-child::before {
+    content: "└─";
+}
+
+.project-modal__rows--files .project-modal__row-title {
+    font-weight: 400;
+}
+
+.project-modal__rows--files .project-modal__row-title::after {
+    content: ".txt";
+    color: #9a9a9a;
+}
+
+.project-modal__body--more-work .project-modal__rows--files .project-modal__row-desc,
+.project-modal__body--more-work .project-modal__rows--files .project-modal__row-list {
+    color: #6f6f6f;
+    font-size: 11px;
+}
+
+/* ── Et cetera: miscellaneous images end exactly where their text ends ── */
+@media (min-width: 561px) {
+    .project-modal__body--more-work .project-modal__section-split {
+        align-items: stretch;
+    }
+
+    .project-modal__body--more-work .project-modal__section-split-media {
+        position: relative;
+        align-self: stretch;
+    }
+
+    .project-modal__body--more-work .project-modal__section-split-media .project-modal__media--section {
+        position: absolute;
+        /* Trim the line-height padding so edges meet the text, not its line box. */
+        inset: 4px 0 5px 0;
+        margin: 0;
+    }
+
+    .project-modal__body--more-work .project-modal__section-split-media .project-modal__figure {
+        position: absolute;
+        inset: 0;
+        margin: 0;
+    }
+
+    .project-modal__body--more-work .project-modal__section-split-media .project-modal__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+/* Item count after a toggle heading: "WORK EXP (2) ★", "AWARDS 5 FILE(S) ★" */
+.project-modal__panel-count {
+    margin-left: 6px;
+    text-transform: none;
+    color: #6f6f6f;
+    font-weight: 400;
+}
+
+/* "Links (n) ★" dropdown inside the project folders; label styled like the folder h3s */
+.project-modal__links-toggle {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 16px 0 0;
+}
+
+.project-modal__links[open] > .project-modal__links-toggle {
+    margin-bottom: 8px;
+}
+
+.project-modal__links > .project-modal__panel-content > .project-modal__bullet-list:last-child {
+    margin-bottom: 0;
+}
+
+/* Same solid underline as the folders' "Links" toggle: About window links + et cetera headings */
+#notepad a,
+#notepad a:visited,
+#notepad .link-button:not(.link-button--star),
+.link-button--star .link-button__text {
+    padding-bottom: 0;
+    border-bottom: 0;
+    background: none;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+#notepad a:hover,
+#notepad .link-button:not(.link-button--star):hover,
+.link-button--star:hover,
+.link-button--star:hover .link-button__text {
+    color: #6f6f6f;
+    text-decoration: underline;
+}
+
+#notepad .about-webring a:first-child,
+#notepad .about-webring a:last-child {
+    text-decoration: none;
+}
+
+.project-modal__body--more-work .project-modal__panel-toggle .project-modal__panel-toggle-text,
+.project-modal__body--more-work .project-modal__panel-toggle:hover .project-modal__panel-toggle-text {
+    text-decoration: underline;
+}
+
+.project-modal__body--more-work .project-modal__panel-toggle:hover .project-modal__panel-toggle-text {
+    color: #6f6f6f;
+}
+
+/* Folder text beside an image (Tiny Tapeout bandgap): image ends where the text ends */
+@media (min-width: 561px) {
+    .project-modal__body:not(.project-modal__body--more-work) .project-modal__section-split {
+        align-items: stretch;
+    }
+
+    .project-modal__body:not(.project-modal__body--more-work) .project-modal__section-split-media {
+        position: relative;
+    }
+
+    .project-modal__body:not(.project-modal__body--more-work) .project-modal__section-split-media .project-modal__media--section {
+        position: absolute;
+        /* Trim the line-height padding so edges meet the text, not its line box. */
+        inset: 0 0 4px 0;
+        margin: 0;
+    }
+
+    .project-modal__body:not(.project-modal__body--more-work) .project-modal__section-split-media .project-modal__figure {
+        position: absolute;
+        inset: 0;
+        margin: 0;
+    }
+
+    .project-modal__body:not(.project-modal__body--more-work) .project-modal__section-split-media .project-modal__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+/* Webring sits in the bottom-right corner of the About window */
+.about-webring {
+    justify-content: flex-end;
+}
+
+/* Company names above the work exp cards: bold and black */
+.project-modal__group-body .project-modal__panel-heading:not(.project-modal__panel-heading--band) {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Programs: cards in two columns (one column on phones) */
+.project-modal__body--more-work .project-modal__rows--two-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.project-modal__body--more-work .project-modal__rows--two-col .project-modal__row + .project-modal__row {
+    margin-top: 0;
+}
+
+.project-modal__body--more-work .project-modal__rows--two-col .project-modal__row-tag {
+    margin-top: auto;
+}
+
+.project-modal__body--more-work .project-modal__rows--two-col .project-modal__row-desc + .project-modal__row-tag,
+.project-modal__body--more-work .project-modal__rows--two-col .project-modal__row-title + .project-modal__row-tag {
+    margin-top: auto;
+    padding-top: 0;
+}
+
+.project-modal__body--more-work .project-modal__rows--two-col .project-modal__row-desc {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 560px) {
+    .project-modal__body--more-work .project-modal__rows--two-col {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Program cards tint on hover by category; the tag picks up the color and lifts */
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row {
+    transition: background-color 0.25s, border-color 0.25s;
+}
+
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row-tag {
+    transition: background-color 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+}
+
+.project-modal__body--more-work .project-modal__row[data-tag="technical"]:hover {
+    background: #e8f1fb;
+    border-color: #a9c4e4;
+}
+
+.project-modal__body--more-work .project-modal__row[data-tag="technical"]:hover .project-modal__row-tag {
+    background: #cfe1f6;
+    border-color: #7fa6d4;
+    color: #1f4f86;
+    transform: translateY(-2px);
+}
+
+.project-modal__body--more-work .project-modal__row[data-tag="venture"]:hover {
+    background: #eaf6ec;
+    border-color: #a8d3b0;
+}
+
+.project-modal__body--more-work .project-modal__row[data-tag="venture"]:hover .project-modal__row-tag {
+    background: #d2ecd7;
+    border-color: #7fbf8b;
+    color: #24663a;
+    transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-modal__body--more-work .project-modal__rows--cards .project-modal__row,
+    .project-modal__body--more-work .project-modal__rows--cards .project-modal__row-tag {
+        transition: none;
+    }
+}
+
+/* Work exp cards: company name inside the box, light orange on hover (GlobalFoundries darker) */
+.project-modal__row-company {
+    margin-bottom: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-company="globalfoundries"]:hover {
+    background: #fbe6d0;
+    border-color: #e6bd92;
+}
+
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-company="amazon"]:hover {
+    background: #fdefe0;
+    border-color: #ecceab;
+}
+
+.project-modal__row[data-company]:hover .project-modal__row-tag {
+    background: #fffaf4;
+    border-color: #e6bd92;
+    color: #8a5a2b;
+}
+
+/* Program tags (technical / venture) stay hidden until the card is hovered */
+.project-modal__body--more-work .project-modal__row[data-tag] .project-modal__row-tag {
+    opacity: 0;
+    transition: opacity 0.25s, background-color 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+}
+
+.project-modal__body--more-work .project-modal__row[data-tag]:hover .project-modal__row-tag,
+.project-modal__body--more-work .project-modal__row[data-tag]:focus-within .project-modal__row-tag {
+    opacity: 1;
+}
+
+/* Split row with its image on the left (Organizing Hackathons) */
+@media (min-width: 561px) {
+    .project-modal__section-split--image-left .project-modal__section-split-media {
+        order: -1;
+    }
+}
+
+/* Work exp date tag: top-right corner of the card, shown only on hover */
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-company] {
+    position: relative;
+}
+
+.project-modal__body--more-work .project-modal__row[data-company] .project-modal__row-tag {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.25s, background-color 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.project-modal__body--more-work .project-modal__row[data-company]:hover .project-modal__row-tag,
+.project-modal__body--more-work .project-modal__row[data-company]:focus-within .project-modal__row-tag {
+    opacity: 1;
+}
+
+/* Program tags (technical / venture): top-right corner, like the work exp dates */
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-tag] {
+    position: relative;
+}
+
+.project-modal__body--more-work .project-modal__row[data-tag] .project-modal__row-tag,
+.project-modal__body--more-work .project-modal__row[data-tag]:hover .project-modal__row-tag {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    margin: 0;
+    transform: none;
+}
+
+/* Keep titles clear of the corner tag so nothing overlaps when it appears */
+.project-modal__body--more-work .project-modal__row[data-tag] .project-modal__row-title {
+    padding-right: 84px;
+}
+
+.project-modal__body--more-work .project-modal__rows--two-col .project-modal__row[data-tag] .project-modal__row-desc {
+    margin-bottom: 0;
+}
+
+/* Other projects: a bit wider than the default folder window */
+.project-modal__panel--wide {
+    width: min(600px, 100%);
+}
+
+.project-modal__body--more-work .project-modal__row[data-tag="community"]:hover {
+    background: #f1ecfa;
+    border-color: #c4b3e3;
+}
+
+.project-modal__body--more-work .project-modal__row[data-tag="community"]:hover .project-modal__row-tag {
+    background: #e3d9f5;
+    border-color: #a58fd3;
+    color: #4f3a85;
+}
+
+/* Photo filling the cell beside the last program card */
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row--image {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    background: #e6e6e6;
+}
+
+.project-modal__row--image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Same 1px dark border as the other modal images */
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row--image {
+    border: 1px solid #6f6f6f;
+}
+
+/* Star turns back as soon as a Links list starts closing */
+.project-modal__panel-details.is-closing .project-modal__panel-toggle-icon {
+    transform: none;
+    color: #6f6f6f;
+}
+
+/* Gap above the links lives inside the list so it slides with it */
+.project-modal__links[open] > .project-modal__links-toggle {
+    margin-bottom: 0;
+}
+
+.project-modal__links > .project-modal__panel-content > .project-modal__bullet-list {
+    padding-top: 8px;
+}
+
+/* Wrapper that slides open under a toggle; flow-root keeps child margins inside its height */
+.project-modal__panel-content {
+    display: flow-root;
 }

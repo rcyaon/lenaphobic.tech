@@ -55,7 +55,7 @@
                 id="fileExplorer"
                 data-window-label="Projects"
                 data-default-width="410"
-                data-default-height="290"
+                data-default-height="270"
                 aria-labelledby="fileExplorerTitle"
                 tabindex="-1"
             >
@@ -182,12 +182,13 @@
                             </svg>
                             <span class="project-icon__label">chipalooza</span>
                         </button>
+                        <!-- "other projects" folder: hidden for now
                         <button
                             type="button"
                             class="project-icon-btn"
-                            data-project-id="work-exp"
+                            data-project-id="other-projects"
                             title="Drag to move, click to open"
-                            aria-label="Work experience"
+                            aria-label="Other projects"
                         >
                             <svg
                                 class="project-folder__icon"
@@ -199,8 +200,9 @@
                             >
                                 <use href="#icon-folder" />
                             </svg>
-                            <span class="project-icon__label">work exp</span>
+                            <span class="project-icon__label">other projects</span>
                         </button>
+                        -->
                         <button
                             type="button"
                             class="project-icon-btn"
@@ -219,25 +221,6 @@
                                 <use href="#icon-folder" />
                             </svg>
                             <span class="project-icon__label">et cetera</span>
-                        </button>
-                        <button
-                            type="button"
-                            class="project-icon-btn"
-                            data-project-id="recognitions"
-                            title="Drag to move, click to open"
-                            aria-label="Awards"
-                        >
-                            <svg
-                                class="project-folder__icon"
-                                viewBox="0 0 52 46"
-                                width="48"
-                                height="42"
-                                aria-hidden="true"
-                                focusable="false"
-                            >
-                                <use href="#icon-folder" />
-                            </svg>
-                            <span class="project-icon__label">awards</span>
                         </button>
                     </div>
                 </div>
@@ -259,7 +242,7 @@
                 id="notepad"
                 data-window-label="About"
                 data-default-width="600"
-                data-default-height="420"
+                data-default-height="440"
                 aria-labelledby="notepadTitle"
                 tabindex="-1"
             >
@@ -314,22 +297,20 @@
                         </div>
 
                         <div class="info-section">
-                            <div class="work-entry__title">
+                            <h2 class="about-welcome">
                                 Welcome to my corner of the internet!
-                            </div>
+                            </h2>
                             <div class="info-line about-intro">
                                I'm Lena, an ECE student at Olin. I grew up between Germany, Belgium, and Spain, which made the internet more of a constant than any one place.
 
                             </div>
                             <div class="info-line about-intro">
-                                In my free time, I watch films (see
-                                <button
+                                In my free time, I watch films (see some of my
+                                <span class="nowrap"><button
                                     type="button"
-                                    class="link-button"
+                                    class="link-button link-button--star"
                                     data-open-project="favorites"
-                                >
-                                    some of my favorites</button
-                                >) and play and make pedals for my electric
+                                ><span class="link-button__text">favorites</span><svg class="link-button__star" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" /></svg></button>)</span> and play and make pedals for my electric
                                 guitar.
                             </div>
                         </div>
@@ -337,7 +318,7 @@
 
                     <div class="section">
                         <div class="section-content">
-                            <h2 class="section-title about-subtitle">
+                            <h2 class="about-welcome about-welcome--section">
                                 Recently
                             </h2>
                             <ul class="about-list">
@@ -367,6 +348,9 @@
                                             (opens in a new tab)</span
                                         ></a
                                     >
+                                </li>
+                                <li>
+                                    Designing analog ICs as a part-time engineer at Itera
                                 </li>
                             </ul>
                         </div>

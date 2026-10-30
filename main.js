@@ -26,7 +26,7 @@ const MIN_H = 160;
  */
 
 /** Projects rendered with the terminal layout (wide panel, ls bands, tree rows). */
-const TERMINAL_PROJECTS = new Set(["more-work", "work-exp", "recognitions"]);
+const TERMINAL_PROJECTS = new Set(["more-work"]);
 
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
@@ -116,13 +116,14 @@ const PROJECTS = {
 
   chipalooza: {
     title: "CHIPALOOZA.TXT — NOTEPAD.EXE",
-    images: [
-      { src: "images/level_shifter_closeup.png", alt: "3D close-up render of the level shifter metal layers" },
-      { src: "images/level_shifter_top_down.png", alt: "Top-down render of the level shifter layout", fit: "wide" },
-    ],
     sections: [
+      { heading: "Bidirectional Level Shifter" },
       {
-        heading: "Bidirectional Level Shifter",
+        imageFirst: true,
+        image: {
+          src: "images/level_shifter_closeup.png",
+          alt: "3D close-up render of the level shifter metal layers",
+        },
         body:
           "A 4-channel level shifter that passes signals back and forth between 1.2V and 3.3V, on the IHP SG13CMOS5L open-source PDK. Basically a TI SN74LVC8T245, except it lives inside the chip.",
       },
@@ -137,6 +138,53 @@ const PROJECTS = {
           "<a href='https://github.com/rcyaon/bidir-level-shifter'>GitHub repository</a>",
           "<a href='https://rcyaon.github.io/bidir-level-shifter/'>Layout viewer</a>",
         ],
+      },
+      { variant: "divider" },
+      { heading: "Inductorless L-Band LNA" },
+      {
+        imageFirst: true,
+        image: {
+          src: "images/lna_ldo_render.jpg",
+          alt: "3D render of the LNA's on-chip voltage regulator (LDO) layout",
+          fit: "wide",
+        },
+        body:
+          "An inductorless low-noise amplifier on GF180MCU, built entirely with open-source tools. It's a first step toward a full L-band downconverter.",
+        bulletsHeading: "Links",
+        bullets: [
+          "<a href='https://github.com/rcyaon/cmos-lna'>GitHub repository</a>",
+        ],
+      },
+    ],
+  },
+
+  "other-projects": {
+    title: "OTHER_PROJECTS.TXT — NOTEPAD.EXE",
+    wide: true,
+    sections: [
+      {
+        imageSide: true,
+        heading: "Suspension Load Logger",
+        body:
+          "A data logger for Olin Baja that bolts onto one corner of the car and records the forces in its suspension arms while it drives: eight strain gauge and load cell channels, sampled together about 2,000 times a second onto a microSD card. It replaces the estimated loads the arms were designed around with measured ones.",
+        bulletsHeading: "Links",
+        bullets: [
+          "<a href='https://github.com/rcyaon/suspension-board'>GitHub repository</a>",
+        ],
+        image: {
+          src: "images/suspension_board.jpg",
+          alt: "3D render of the suspension load logger PCB",
+        },
+      },
+      { variant: "divider" },
+      {
+        imageSide: true,
+        heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
+        body: "Architected a 5-stage pipelined RISC-V processor in Verilog, implementing full forwarding, hazard detection, and branch prediction (BTB). Validated in ModelSim and on a Cyclone V FPGA. Extended baseline with custom accumulate accelerator, achieving 4x cycle reduction (31 vs. 126 cycles).",
+        image: {
+          src: "images/rv1.png",
+          alt: "Processor datapath diagram",
+        },
       },
     ],
   },
@@ -178,28 +226,21 @@ const PROJECTS = {
     ],
   },
 
-  "work-exp": {
-    title: "TERMINAL.EXE",
+
+  "more-work": {
+    title: "ET_CETERA.TXT — NOTEPAD.EXE",
     noMedia: true,
     sections: [
       {
         variant: "panel",
         panelHeadingStyle: "band",
-        treeBlocks: true,
-        heading: "‎ Itera",
+        collapsible: true,
+        rowBlocks: true,
+        rowStyle: "cards",
+        heading: "‎ work experience",
         blocks: [
           {
-            heading: "Analog IC Engineer (part-time, present)",
-          },
-        ],
-      },
-      {
-        variant: "panel",
-        panelHeadingStyle: "band",
-        treeBlocks: true,
-        heading: "‎ globalfoundries",
-        blocks: [
-          {
+            company: "GlobalFoundries",
             heading: "Device Engineering Intern (summer 2026)",
             bullets: [
               "Spent the summer at GlobalFoundries building test silicon infrastructure for emerging memory, entailing a pulse-write eNVM test IP on 22FDX, with one configurable path routing programmable write pulses or analog bias to any BL/WL/SL in the array.",
@@ -207,15 +248,8 @@ const PROJECTS = {
               "Authored handoff document. Platform is being taped out post-internship and extended to new memory technologies.",
             ],
           },
-        ],
-      },
-      {
-        variant: "panel",
-        panelHeadingStyle: "band",
-        treeBlocks: true,
-        heading: "‎ amazon",
-        blocks: [
           {
+            company: "Amazon",
             heading: "Software Engineering Intern (summer 2025)",
             bullets: [
               "Designed and built OfferAnalytics, an anomaly monitoring service for cross-border offers on AWS (Lambda, Kotlin, DynamoDB), with a plugin architecture that decouples new metrics from the core service.",
@@ -225,54 +259,56 @@ const PROJECTS = {
           },
         ],
       },
-    ],
-  },
-
-  "more-work": {
-    title: "TERMINAL.EXE",
-    sections: [
       {
         isHtml: true,
         variant: "panel",
         panelHeadingStyle: "band",
-        treeBlocks: true,
-        heading: "‎ programs/technical",
+        collapsible: true,
+        rowBlocks: true,
+        rowStyle: "cards",
+        columns: 2,
+        heading: "‎ programs",
         blocks: [
           {
+            tag: "technical",
             heading: "MATLAB Ambassador",
             body: "Paid work delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.",
           },
           {
+            tag: "technical",
             heading: "MIT Introduction to Technology, Engineering, and Science (MITES)",
             body: "Built autonomous Arduino robots and wrote about biomimicry in train engineering. ",
           },
           {
-            heading:
-              "SureStart Virtual AI Learning Program with an Applied Deep Learning Focus",
+            tag: "technical",
+            heading: "SureStart Deep Learning Program",
             body: "Deep learning fundamentals: neural networks, CNNs, GANs, optimization, and model evaluation with Python and TensorFlow.",
           },
           {
-            heading: "Stanford Engineering Research Introductions Scholar",
-          },
-        ],
-      },
-      {
-        variant: "panel",
-        panelHeadingStyle: "band",
-        treeBlocks: true,
-        heading: "‎ programs/venture",
-        blocks: [
-          {
+            tag: "venture",
             heading: "Collide Capital Venture Scout",
             body: "Sourcing and diligencing pre-seed to series A deep tech startups. Learning how to VC at an early-stage VC. If you're building something, let's chat!",
           },
           {
+            tag: "venture",
             heading: "Dorm Room Fund Blueprint Investor Track",
             body: "Selected as 1 of 15 nationwide for a fellowship on evaluating early-stage startups from an investor's lens.",
           },
           {
+            tag: "venture",
             heading: "Girls Into VC externship",
             body: "Externed with the CEO of upskill (\"the horizontal people-search layer for agents\") doing market research and helping out with client hiring work.",
+          },
+          {
+            tag: "community",
+            heading: "Organizing Hackathons",
+            body: "Ran PCB design, JavaScript, and CNC workshops for K-12 students at FUTO Austin and Amazon Seattle through <a href='https://daysofservice.hackclub.com/'>Hack Club</a>, and led logistics for <a href=\"https://www.bigredhacks.com/\">BigRed//Hacks</a>.",
+          },
+          {
+            image: {
+              src: "images/blot.JPG",
+              alt: "Students' drawing machines at a Hack Club workshop",
+            },
           },
         ],
       },
@@ -280,35 +316,7 @@ const PROJECTS = {
         isHtml: true,
         variant: "panel",
         panelHeadingStyle: "band",
-        heading: "‎ MISCELLANEOUS",
-        blocks: [{}],
-      },
-      {
-        heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
-        body: "Architected a 5-stage pipelined RISC-V processor in Verilog, implementing full forwarding, hazard detection, and branch prediction (BTB). Validated in ModelSim and on a Cyclone V FPGA. Extended baseline with custom accumulate accelerator, achieving 4x cycle reduction (31 vs. 126 cycles).",
-        image: {
-          src: "images/rv1.png",
-          alt: "Processor preview",
-        },
-      },
-      {
-        heading: "Organizing Hackathons",
-        body: "Taught K-12 students hardware basics through workshops on PCB design, JavaScript drawing, and CNC machining. Hosted at FUTO Austin and Amazon Seattle through <a href='https://daysofservice.hackclub.com/'>Hack Club's Days of Service</a>. Also ran logistics for <a href=\"https://www.bigredhacks.com/\">BigRed//Hacks</a>, Cornell's largest hackathon.",
-        image: {
-          src: "images/blot.JPG",
-        },
-      },
-    ],
-  },
-
-  recognitions: {
-    title: "TERMINAL.EXE",
-    noMedia: true,
-    sections: [
-      {
-        isHtml: true,
-        variant: "panel",
-        panelHeadingStyle: "band",
+        collapsible: true,
         treeBlocks: true,
         heading: `‎ Awards`,
         blocks: [
@@ -322,12 +330,12 @@ const PROJECTS = {
           },
           {
             heading:
-              "Most Nostalgic Hack at hack club's leadership Summit in sf",
+              "Most Nostalgic Hack at Hack Club's Leadership Summit in SF",
           },
           {
             heading: "Societal Impact and Hardware Winner at YHack",
             bullets: [
-              "Built Canary, a real-time mine hazard detector using a Raspberry Pi, gas sensors, and depth cameras. Placed 3rd in Societal Impact and 4th in Hardware out of 700+ participants. <a href=\"https://devpost.com/software/canary-axf7o2\">Learn more on Devpost</a>.",
+              "Built Canary, a real-time mine hazard detector using a Raspberry Pi, gas sensors, and depth cameras. Placed 3rd in Societal Impact and 4th in Hardware out of 700+ participants.",
             ],
           },
           {
@@ -341,6 +349,7 @@ const PROJECTS = {
       {
         variant: "panel",
         panelHeadingStyle: "band",
+        collapsible: true,
         treeBlocks: true,
         heading: "‎ scholarships",
         blocks: [
@@ -368,14 +377,11 @@ const PROJECTS = {
             heading: "Thrive Scholar",
             body: "6-year college and career mentorship program. Within the cohort, selected by Citadel and Deloitte as a scholarship recipient.",
           },
-          {
-            heading: "Meinig Family Cornell National Scholar (transferred to Olin)",
-            body: "Awarded to less than 2% of students at Cornell for leadership with a $4,000/year scholarship.",
-          },
         ],
       },
     ],
   },
+
 };
 
 const windows = () =>
@@ -871,6 +877,7 @@ function openProjectModal(projectId) {
       "project-modal__panel--more-work",
       TERMINAL_PROJECTS.has(projectId),
     );
+    panel.classList.toggle("project-modal__panel--wide", data.wide === true);
   }
 
   titleEl.textContent = data.title;
@@ -883,27 +890,12 @@ function openProjectModal(projectId) {
   if (useSectionImages) {
     const splitSideImages = TERMINAL_PROJECTS.has(projectId);
     bodyEl.innerHTML = data.sections
-      .map((s) => {
-        if (s.image && (splitSideImages || s.imageSide)) {
-          return renderSectionWithSideImage(s);
-        }
-        // Image above its copy instead of below it.
-        if (s.image && s.imageFirst) {
-          return (
-            `<div class="project-modal__section-stack">` +
-            renderSectionImageBlock(s.image) +
-            renderProjectSection(s) +
-            `</div>`
-          );
-        }
-        return (
-          renderProjectSection(s) +
-          (s.image ? renderSectionImageBlock(s.image) : "")
-        );
-      })
+      .map((s) => renderBodySection(s, splitSideImages))
       .join("");
   } else {
-    const sectionsHtml = data.sections.map(renderProjectSection).join("");
+    const sectionsHtml = data.sections
+      .map((s) => renderBodySection(s, TERMINAL_PROJECTS.has(projectId)))
+      .join("");
     const mediaHtml =
       data.noMedia === true
         ? ""
@@ -1021,6 +1013,134 @@ function renderProjectPanelTreeBlocks(blocks) {
     .join("");
 }
 
+/** Blocks as a list of rows (masonjwang.com "some things i've built"): bold title, muted description, dashed separators. */
+/**
+ * Rows of title + description. style "cards" boxes each row with a small tag
+ * (b.tag, or a trailing "(summer 2026)" in the heading); style "files" shows
+ * the rows as a terminal directory listing under `path`.
+ */
+function renderProjectPanelRowBlocks(blocks, style, path, columns) {
+  const filtered = blocks.filter((b) => b.heading && String(b.heading).trim());
+  if (filtered.length === 0) return "";
+  const items = blocks
+    .filter((b) => filtered.includes(b) || b.image)
+    .map((b) => {
+      // Picture-only cell, e.g. a photo filling the space beside the last card.
+      if (!b.heading && b.image) {
+        return (
+          `<li class="project-modal__row project-modal__row--image" aria-hidden="${b.image.alt ? "false" : "true"}">` +
+          `<img src="${escapeAttr(b.image.src)}" alt="${escapeHtml(b.image.alt || "")}" loading="lazy">` +
+          `</li>`
+        );
+      }
+      let heading = String(b.heading).trim();
+      let tag = b.tag || "";
+      const dated = heading.match(/\s*\(([^)]*\d{4}[^)]*)\)$/);
+      if (style === "cards" && !tag && dated) {
+        tag = dated[1];
+        heading = heading.slice(0, dated.index);
+      }
+      const body =
+        b.body && String(b.body).trim()
+          ? `<p class="project-modal__row-desc">${linkifyText(String(b.body).trim())}</p>`
+          : "";
+      const bullets = (b.bullets || []).filter((item) => item && String(item).trim());
+      // A lone bullet reads better as a plain description.
+      const list =
+        bullets.length === 1
+          ? `<p class="project-modal__row-desc">${linkifyText(String(bullets[0]).trim())}</p>`
+          : bullets.length
+        ? `<ul class="project-modal__row-list">` +
+          bullets.map((item) => `<li>${linkifyText(String(item).trim())}</li>`).join("") +
+          `</ul>`
+        : "";
+      const tagHtml =
+        style === "cards" && tag
+          ? `<span class="project-modal__row-tag">${escapeHtml(tag)}</span>`
+          : "";
+      return (
+        `<li class="project-modal__row"` +
+        (b.tag ? ` data-tag="${escapeAttr(String(b.tag).toLowerCase())}"` : "") +
+        (b.company ? ` data-company="${escapeAttr(String(b.company).toLowerCase())}"` : "") +
+        `>` +
+        (b.company ? `<span class="project-modal__row-company">${escapeHtml(b.company)}</span>` : "") +
+        `<span class="project-modal__row-title">${escapeHtml(heading)}</span>` +
+        body +
+        list +
+        tagHtml +
+        `</li>`
+      );
+    })
+    .join("");
+  const styleClass =
+    (style ? ` project-modal__rows--${style}` : "") +
+    (columns === 2 ? " project-modal__rows--two-col" : "");
+  const rows = `<ul class="project-modal__rows${styleClass}">${items}</ul>`;
+  if (style !== "files") return rows;
+  const dir = ["ET_CETERA", path]
+    .filter(Boolean)
+    .map((x) => String(x).replace(/[\s\u200e]+/g, " ").trim().toUpperCase().replace(/ /g, "_"))
+    .join("\\");
+  return (
+    `<div class="project-modal__files-prompt">C:\\${escapeHtml(dir)}&gt; dir</div>` +
+    rows
+  );
+}
+
+/** One body section, with its image beside, above, or below the copy. */
+function renderBodySection(s, splitSideImages) {
+  if (s.variant === "group") return renderSectionGroup(s, splitSideImages);
+  if (s.image && (splitSideImages || s.imageSide)) {
+    return renderSectionWithSideImage(s);
+  }
+  // Image above its copy instead of below it.
+  if (s.image && s.imageFirst) {
+    return (
+      `<div class="project-modal__section-stack">` +
+      renderSectionImageBlock(s.image) +
+      renderProjectSection(s) +
+      `</div>`
+    );
+  }
+  return (
+    renderProjectSection(s) + (s.image ? renderSectionImageBlock(s.image) : "")
+  );
+}
+
+/** Collapsible band that holds several full sections (e.g. Miscellaneous projects with images). */
+function renderSectionGroup(s, splitSideImages) {
+  const label = s.heading && String(s.heading).trim() ? s.heading : "";
+  const inner = (s.sections || [])
+    .map((child) => renderBodySection(child, splitSideImages))
+    .join("");
+  return renderCollapsiblePanel(
+    "project-modal__panel-heading project-modal__panel-heading--band",
+    label,
+    `<div class="project-modal__group-body">${inner}</div>`,
+    `(${(s.sections || []).length})`,
+  );
+}
+
+/** Panel whose band heading is a toggle; its contents start hidden. */
+/** `count` is shown in gray after the label, e.g. "(2)" or "5 file(s)". */
+function renderCollapsiblePanel(headingClass, label, contentHtml, count) {
+  const lead = label.match(/^[\s\u200e]*/)[0];
+  const text = label.slice(lead.length);
+  return (
+    `<div class="project-modal__experience-panel project-modal__experience-panel--collapsible">` +
+    `<details class="project-modal__panel-details">` +
+    `<summary class="${headingClass} project-modal__panel-toggle">${escapeHtml(lead)}` +
+    `<span class="project-modal__panel-toggle-text">${escapeHtml(text)}</span>` +
+    (count ? `<span class="project-modal__panel-count">${escapeHtml(count)}</span>` : "") +
+    `<svg class="project-modal__panel-toggle-icon" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false">` +
+    `<path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg>` +
+    `</summary>` +
+    `<div class="project-modal__panel-content">${contentHtml}</div>` +
+    `</details>` +
+    `</div>`
+  );
+}
+
 function renderProjectPanel(s) {
   const label = s.heading && String(s.heading).trim() ? s.heading : "";
   if (!label || !s.blocks || s.blocks.length === 0) return "";
@@ -1029,16 +1149,30 @@ function renderProjectPanel(s) {
       ? "project-modal__panel-heading project-modal__panel-heading--band"
       : "project-modal__panel-heading";
   const title = `<h3 class="${headingClass}">${escapeHtml(label)}</h3>`;
-  const bodyInner = s.treeBlocks
-    ? renderProjectPanelTreeBlocks(s.blocks)
-    : s.blocks.map(renderProjectPanelBlock).join("");
+  const bodyInner = s.rowBlocks
+    ? renderProjectPanelRowBlocks(s.blocks, s.rowStyle, label, s.columns)
+    : s.treeBlocks
+      ? renderProjectPanelTreeBlocks(s.blocks)
+      : s.blocks.map(renderProjectPanelBlock).join("");
   const titleOnly = bodyInner.trim().length === 0;
   const wrapClass = titleOnly
     ? "project-modal__experience-panel project-modal__experience-panel--title-only"
     : "project-modal__experience-panel";
-  const bodyClass = s.treeBlocks
-    ? "project-modal__experience-panel-body project-modal__experience-panel-body--tree"
-    : "project-modal__experience-panel-body";
+  const bodyClass = s.rowBlocks
+    ? "project-modal__experience-panel-body project-modal__experience-panel-body--rows"
+    : s.treeBlocks
+      ? "project-modal__experience-panel-body project-modal__experience-panel-body--tree"
+      : "project-modal__experience-panel-body";
+  if (s.collapsible && !titleOnly) {
+    const n = s.blocks.filter((x) => x.heading && String(x.heading).trim()).length;
+    const asFiles = s.rowStyle === "files" || s.countAs === "files";
+    return renderCollapsiblePanel(
+      headingClass,
+      label,
+      `<div class="${bodyClass}">${bodyInner}</div>`,
+      asFiles ? `${n} files` : `(${n})`,
+    );
+  }
   return (
     `<div class="${wrapClass}">` +
     title +
@@ -1065,6 +1199,11 @@ function renderProjectSection(s) {
     );
   }
 
+  // A "Links" list becomes a dropdown: underlined label, link count, and star.
+  if (isLinksLabel(s.heading) && s.bullets?.length && !(s.body && String(s.body).trim())) {
+    return renderLinksToggle(s.heading, s.bullets);
+  }
+
   let html = "";
 
   if (s.heading && String(s.heading).trim()) {
@@ -1081,7 +1220,9 @@ function renderProjectSection(s) {
         .join("");
     }
   }
-  if (s.bullets && s.bullets.length > 0) {
+  if (s.bullets && s.bullets.length > 0 && isLinksLabel(s.bulletsHeading)) {
+    html += renderLinksToggle(s.bulletsHeading, s.bullets);
+  } else if (s.bullets && s.bullets.length > 0) {
     if (s.bulletsHeading && String(s.bulletsHeading).trim()) {
       html += `<h3>${escapeHtml(s.bulletsHeading)}</h3>`;
     }
@@ -1094,12 +1235,34 @@ function renderProjectSection(s) {
   return html;
 }
 
+function isLinksLabel(label) {
+  return /^\s*links\s*$/i.test(String(label || ""));
+}
+
+/** Collapsed "Links (n) ★" heading that opens to its list of links. */
+function renderLinksToggle(label, bullets) {
+  return (
+    `<details class="project-modal__panel-details project-modal__links">` +
+    `<summary class="project-modal__panel-toggle project-modal__links-toggle">` +
+    `<span class="project-modal__panel-toggle-text">${escapeHtml(String(label).trim())}</span>` +
+    `<span class="project-modal__panel-count">(${bullets.length})</span>` +
+    `<svg class="project-modal__panel-toggle-icon" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false">` +
+    `<path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg>` +
+    `</summary>` +
+    '<div class="project-modal__panel-content"><ul class="project-modal__bullet-list">' +
+    bullets.map((item) => `<li>${linkifyText(item)}</li>`).join("") +
+    "</ul></div>" +
+    `</details>`
+  );
+}
+
 /** Section copy (heading, body, bullets) beside its image. */
 function renderSectionWithSideImage(s) {
   const copyHtml = renderProjectSection(s);
   const mediaHtml = s.image ? renderSectionImageBlock(s.image) : "";
+  const flip = s.imageLeft ? " project-modal__section-split--image-left" : "";
   return (
-    `<div class="project-modal__section-split">` +
+    `<div class="project-modal__section-split${flip}">` +
     `<div class="project-modal__section-split-copy">${copyHtml}</div>` +
     `<div class="project-modal__section-split-media">${mediaHtml}</div>` +
     `</div>`
@@ -1426,6 +1589,7 @@ function closeProjectModal() {
   const modalPanel = modal.querySelector(".project-modal__panel");
   modalPanel?.classList.remove("project-modal__panel--gallery");
   modalPanel?.classList.remove("project-modal__panel--more-work");
+  modalPanel?.classList.remove("project-modal__panel--wide");
   modal.hidden = true;
   document.body.classList.remove("modal-open");
   setBackgroundInert(false);
@@ -1564,6 +1728,70 @@ function wireProjectIcons() {
 function wireProjectModal() {
   const modal = document.getElementById("projectModal");
   if (!modal) return;
+
+  // Opening "Links" beside an image would stretch the image with the text; pin its size instead.
+  const bodyEl = document.getElementById("projectModalBody");
+  bodyEl?.addEventListener("click", (e) => {
+    const summary = e.target.closest(".project-modal__panel-details > summary");
+    if (!summary) return;
+    const details = summary.parentElement;
+    const list = details.querySelector(":scope > .project-modal__panel-content");
+    const opening = !details.open;
+
+    if (opening && details.classList.contains("project-modal__links")) {
+      const media = summary
+        .closest(".project-modal__section-split")
+        ?.querySelector(".project-modal__section-split-media");
+      if (media) {
+        media.style.height = `${media.offsetHeight}px`;
+        media.style.alignSelf = "start";
+      }
+    }
+
+    // Slide the contents open/closed instead of popping them in.
+    if (!list || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    e.preventDefault();
+    list.getAnimations().forEach((a) => a.cancel());
+    if (opening) {
+      details.open = true;
+      const h = list.offsetHeight;
+      list.animate(
+        [
+          { height: "0px", opacity: 0, overflow: "hidden" },
+          { height: `${h}px`, opacity: 1, overflow: "hidden" },
+        ],
+        { duration: 280, easing: "ease-out" },
+      );
+    } else {
+      details.classList.add("is-closing");
+      const anim = list.animate(
+        [
+          { height: `${list.offsetHeight}px`, opacity: 1, overflow: "hidden" },
+          { height: "0px", opacity: 0, overflow: "hidden" },
+        ],
+        { duration: 220, easing: "ease-in" },
+      );
+      anim.onfinish = () => {
+        details.classList.remove("is-closing");
+        details.open = false;
+      };
+    }
+  });
+  bodyEl?.addEventListener(
+    "toggle",
+    (e) => {
+      const details = e.target;
+      if (!details.matches?.(".project-modal__links") || details.open) return;
+      const media = details
+        .closest(".project-modal__section-split")
+        ?.querySelector(".project-modal__section-split-media");
+      if (media) {
+        media.style.height = "";
+        media.style.alignSelf = "";
+      }
+    },
+    true,
+  );
 
   modal.querySelectorAll("[data-modal-dismiss]").forEach((el) => {
     el.addEventListener("click", () => closeProjectModal());
