@@ -2330,34 +2330,49 @@ button:focus-visible,
     transition: background-color 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
 }
 
-.project-modal__body--more-work .project-modal__row[data-tag="technical"]:hover {
-    background: #e8f1fb;
-    border-color: #a9c4e4;
+/* Program cards at rest: soft white-to-gray gradient instead of flat gray */
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-tag] {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
 }
 
-.project-modal__body--more-work .project-modal__row[data-tag="technical"]:hover .project-modal__row-tag {
-    background: #cfe1f6;
-    border-color: #7fa6d4;
-    color: #1f4f86;
-    transform: translateY(-2px);
+/* Program hover colors sweep a sunset gradient across the cards in order:
+   lavender -> orchid -> pink -> rose -> coral -> apricot -> gold */
+.project-modal__body--more-work .project-modal__row[data-tag] { --h: 270; }
+.project-modal__body--more-work .project-modal__row[data-tag]:nth-child(2) { --h: 295; }
+.project-modal__body--more-work .project-modal__row[data-tag]:nth-child(3) { --h: 320; }
+.project-modal__body--more-work .project-modal__row[data-tag]:nth-child(4) { --h: 345; }
+.project-modal__body--more-work .project-modal__row[data-tag]:nth-child(5) { --h: 10; }
+.project-modal__body--more-work .project-modal__row[data-tag]:nth-child(6) { --h: 28; }
+.project-modal__body--more-work .project-modal__row[data-tag]:nth-child(n + 7) { --h: 45; }
+
+.project-modal__body--more-work .project-modal__row[data-tag]:hover {
+    background: linear-gradient(135deg, hsl(var(--h) 90% 96%) 0%, hsl(calc(var(--h) - 20) 90% 95%) 100%);
+    border-color: hsl(var(--h) 60% 80%);
+    box-shadow: 3px 3px 0 hsl(var(--h) 70% 90%);
 }
 
-.project-modal__body--more-work .project-modal__row[data-tag="venture"]:hover {
-    background: #eaf6ec;
-    border-color: #a8d3b0;
+.project-modal__body--more-work .project-modal__row[data-tag]:hover .project-modal__row-tag {
+    background: #fff;
+    border-color: hsl(var(--h) 55% 74%);
+    color: hsl(var(--h) 45% 38%);
 }
 
-.project-modal__body--more-work .project-modal__row[data-tag="venture"]:hover .project-modal__row-tag {
-    background: #d2ecd7;
-    border-color: #7fbf8b;
-    color: #24663a;
-    transform: translateY(-2px);
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-tag] {
+    transition: background-color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.project-modal__body--more-work .project-modal__row[data-tag]:hover {
+    transform: translate(-1px, -1px);
 }
 
 @media (prefers-reduced-motion: reduce) {
     .project-modal__body--more-work .project-modal__rows--cards .project-modal__row,
     .project-modal__body--more-work .project-modal__rows--cards .project-modal__row-tag {
         transition: none;
+    }
+
+    .project-modal__body--more-work .project-modal__row[data-tag]:hover {
+        transform: none;
     }
 }
 
@@ -2372,14 +2387,26 @@ button:focus-visible,
     line-height: 1.6;
 }
 
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-company] {
+    transition: background-color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-company]:hover {
+        transform: translate(-1px, -1px);
+    }
+}
+
 .project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-company="globalfoundries"]:hover {
     background: #fbe6d0;
     border-color: #e6bd92;
+    box-shadow: 3px 3px 0 #f3d2b0;
 }
 
 .project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-company="amazon"]:hover {
     background: #fdefe0;
     border-color: #ecceab;
+    box-shadow: 3px 3px 0 #f7e0c6;
 }
 
 .project-modal__row[data-company]:hover .project-modal__row-tag {
@@ -2448,20 +2475,9 @@ button:focus-visible,
     margin-bottom: 0;
 }
 
-/* Other projects: a bit wider than the default folder window */
+/* More projects: a bit wider than the default folder window */
 .project-modal__panel--wide {
     width: min(600px, 100%);
-}
-
-.project-modal__body--more-work .project-modal__row[data-tag="community"]:hover {
-    background: #fbeaf0;
-    border-color: #e7b3c6;
-}
-
-.project-modal__body--more-work .project-modal__row[data-tag="community"]:hover .project-modal__row-tag {
-    background: #f6d5e1;
-    border-color: #d68aa6;
-    color: #8a2f55;
 }
 
 /* Photo filling the cell beside the last program card */
@@ -2504,4 +2520,11 @@ button:focus-visible,
 /* Wrapper that slides open under a toggle; flow-root keeps child margins inside its height */
 .project-modal__panel-content {
     display: flow-root;
+}
+
+/* Phones: programs stack in one column and the photo cell collapses to a gray strip, so hide it */
+@media (max-width: 560px) {
+    .project-modal__body--more-work .project-modal__rows--cards .project-modal__row--image {
+        display: none;
+    }
 }

@@ -6,7 +6,7 @@ const MIN_W = 220;
 const MIN_H = 160;
 
 /**
- * @typedef {{ src: string; alt?: string; fit?: 'contain' | 'cover' | 'wide' }} ProjectImage
+ * @typedef {{ src: string; alt?: string; fit?: 'contain' | 'cover' | 'wide'; position?: string; zoom?: number }} ProjectImage
  * @typedef {{ heading?: string; body?: string; bullets?: string[] }} ProjectPanelBlock
  * @typedef {{
  *   heading: string;
@@ -159,7 +159,7 @@ const PROJECTS = {
   },
 
   "other-projects": {
-    title: "OTHER_PROJECTS.TXT — NOTEPAD.EXE",
+    title: "MORE_PROJECTS.TXT — NOTEPAD.EXE",
     wide: true,
     sections: [
       {
@@ -172,8 +172,10 @@ const PROJECTS = {
           "<a href='https://github.com/rcyaon/suspension-board'>GitHub repository</a>",
         ],
         image: {
-          src: "images/suspension_board.jpg",
+          src: "images/suspension_board_3d.png",
           alt: "3D render of the suspension load logger PCB",
+          // Crop shifted toward the right edge so the board sits left of center
+          position: "85% center",
         },
       },
       { variant: "divider" },
@@ -1521,6 +1523,17 @@ function wireProjectGallery(modal, root, items) {
  * @param {ProjectImage[]} images
  * @returns {string}
  */
+/** Optional crop position and zoom; zoom grows from the side the crop is pinned to. */
+function imageStyleAttr(img) {
+  const rules = [];
+  if (img.position) rules.push(`object-position: ${img.position}`);
+  if (img.zoom && img.zoom !== 1) {
+    rules.push(`transform: scale(${Number(img.zoom)})`);
+    rules.push(`transform-origin: ${img.position || "center"}`);
+  }
+  return rules.length ? ` style="${escapeAttr(rules.join("; "))}"` : "";
+}
+
 function renderProjectFigureHtmlFromImages(images) {
   if (!images || images.length === 0) return "";
   return images
@@ -1531,7 +1544,9 @@ function renderProjectFigureHtmlFromImages(images) {
       else if (img.fit === "wide") fitClass = " project-modal__image--wide";
       return (
         `<figure class="project-modal__figure">` +
-        `<img class="project-modal__image${fitClass}" src="${escapeAttr(img.src)}" alt="${escapeHtml(alt)}" loading="lazy">` +
+        `<img class="project-modal__image${fitClass}" src="${escapeAttr(img.src)}" alt="${escapeHtml(alt)}"` +
+        imageStyleAttr(img) +
+        ` loading="lazy">` +
         `</figure>`
       );
     })
