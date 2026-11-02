@@ -212,18 +212,18 @@ const PROJECTS = {
             company: "GlobalFoundries",
             heading: "Device Engineering Intern (summer 2026)",
             bullets: [
-              "Spent the summer at GlobalFoundries building test silicon infrastructure for emerging memory, entailing a pulse-write eNVM test IP on 22FDX, with one configurable path routing programmable write pulses or analog bias to any BL/WL/SL in the array.",
-              "Characterized 12LP access transistor candidates via Id-Vd sweeps, weighing write current against leakage to select devices for MRAM and RRAM cells.",
-              "Authored handoff document. Platform is being taped out post-internship and extended to new memory technologies.",
+              "Built test infrastructure for emerging memory (eNVM) on the 22FDX process: a test block that can send programmable write pulses or an analog bias to any bit line, word line or source line in the array, all through one configurable path.",
+              "Compared candidate access transistors for MRAM and RRAM cells on 12LP, running Id-Vd sweeps to trade off how much write current each could deliver against how much it leaked.",
+              "Wrote the handoff doc so the work could keep going after I left. The platform is now headed to tapeout and being extended to more memory technologies.",
             ],
           },
           {
             company: "Amazon",
             heading: "Software Engineering Intern (summer 2025)",
             bullets: [
-              "Designed and built OfferAnalytics, an anomaly monitoring service for cross-border offers on AWS (Lambda, Kotlin, DynamoDB), with a plugin architecture that decouples new metrics from the core service.",
-              "Real-time pipelines from the data warehouse and DynamoDB into CloudWatch and S3 brought detection latency down from 8 days to under 24 hours.",
-              "Reworking cross-region alert escalation took mean incident resolution from 7 days to 6 hours across distributed service teams.",
+              "Designed and built OfferAnalytics, an AWS service (Lambda, Kotlin, DynamoDB) that flags unusual behavior in cross-border offers. New metrics plug in without changing the core service.",
+              "Set up real-time pipelines from the data warehouse and DynamoDB into CloudWatch and S3, so problems now get caught in under 24 hours instead of 8 days.",
+              "Reworked how alerts escalate across regions, cutting the average time to resolve an incident from 7 days to 6 hours across distributed service teams.",
             ],
           },
         ],
@@ -243,8 +243,7 @@ const PROJECTS = {
             hideTag: true,
             wide: true,
             heading: "Suspension Load Logger",
-            body: "A data logger for Olin Baja that bolts onto one corner of the car and records the forces in its suspension arms while it drives: eight strain gauge and load cell channels, sampled together about 2,000 times a second onto a microSD card. It replaces the estimated loads the arms were designed around with measured ones.",
-            href: "https://github.com/rcyaon/suspension-board",
+            body: "A data logger for Olin Baja that bolts onto one corner of the car and measures how hard the suspension arms actually get pushed around. I designed the board in KiCad: four layers, eight strain gauge channels all sampled at the same instant, and a super quiet power rail so the tiny sensor signals don't get lost in noise. It writes everything to an SD card about 2,000 times a second, so the team gets real numbers instead of guesses.",
           },
           {
             tag: "digital",
@@ -272,13 +271,18 @@ const PROJECTS = {
         blocks: [
           {
             tag: "technical",
-            heading: "MATLAB Ambassador",
-            body: "Paid work delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.",
-          },
-          {
-            tag: "technical",
             heading: "MIT Introduction to Technology, Engineering, and Science (MITES)",
             body: "Built autonomous Arduino robots and wrote about biomimicry in train engineering. ",
+          },
+          {
+            tag: "venture",
+            heading: "Dorm Room Fund Blueprint Investor Track",
+            body: "Selected as 1 of 15 nationwide for a fellowship on evaluating early-stage startups from an investor's lens.",
+          },
+          {
+            tag: "venture",
+            heading: "Collide Capital Venture Scout",
+            body: "Sourcing and diligencing pre-seed through Series A deep tech startups while learning the ropes of early-stage investing. If you're building something, I'd love to chat!",
           },
           {
             tag: "technical",
@@ -286,14 +290,9 @@ const PROJECTS = {
             body: "Deep learning fundamentals: neural networks, CNNs, GANs, optimization, and model evaluation with Python and TensorFlow.",
           },
           {
-            tag: "venture",
-            heading: "Collide Capital Venture Scout",
-            body: "Sourcing and diligencing pre-seed to series A deep tech startups. Learning how to VC at an early-stage VC. If you're building something, let's chat!",
-          },
-          {
-            tag: "venture",
-            heading: "Dorm Room Fund Blueprint Investor Track",
-            body: "Selected as 1 of 15 nationwide for a fellowship on evaluating early-stage startups from an investor's lens.",
+            tag: "technical",
+            heading: "MATLAB Ambassador",
+            body: "Paid work delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.",
           },
           {
             tag: "venture",
