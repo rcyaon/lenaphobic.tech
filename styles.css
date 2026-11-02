@@ -2528,3 +2528,19 @@ button:focus-visible,
         display: none;
     }
 }
+
+/* More projects: a card marked wide spans both columns */
+.project-modal__body--more-work .project-modal__rows--two-col .project-modal__row[data-wide] {
+    grid-column: 1 / -1;
+}
+
+/* Gap between a card's description and its links */
+.project-modal__body--more-work .project-modal__row-desc + .project-modal__row-desc,
+.project-modal__body--more-work .project-modal__row-desc + .project-modal__row-list {
+    margin-top: 10px;
+}
+
+/* Cards tinted by tag but with no corner label: title can use the full width */
+.project-modal__body--more-work .project-modal__row[data-tag][data-no-tag] .project-modal__row-title {
+    padding-right: 0;
+}

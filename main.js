@@ -158,39 +158,6 @@ const PROJECTS = {
     ],
   },
 
-  "other-projects": {
-    title: "MORE_PROJECTS.TXT — NOTEPAD.EXE",
-    wide: true,
-    sections: [
-      {
-        imageSide: true,
-        heading: "Suspension Load Logger",
-        body:
-          "A data logger for Olin Baja that bolts onto one corner of the car and records the forces in its suspension arms while it drives: eight strain gauge and load cell channels, sampled together about 2,000 times a second onto a microSD card. It replaces the estimated loads the arms were designed around with measured ones.",
-        bulletsHeading: "Links",
-        bullets: [
-          "<a href='https://github.com/rcyaon/suspension-board'>GitHub repository</a>",
-        ],
-        image: {
-          src: "images/suspension_board_3d.png",
-          alt: "3D render of the suspension load logger PCB",
-          // Crop shifted toward the right edge so the board sits left of center
-          position: "85% center",
-        },
-      },
-      { variant: "divider" },
-      {
-        imageSide: true,
-        heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
-        body: "Architected a 5-stage pipelined RISC-V processor in Verilog, implementing full forwarding, hazard detection, and branch prediction (BTB). Validated in ModelSim and on a Cyclone V FPGA. Extended baseline with custom accumulate accelerator, achieving 4x cycle reduction (31 vs. 126 cycles).",
-        image: {
-          src: "images/rv1.png",
-          alt: "Processor datapath diagram",
-        },
-      },
-    ],
-  },
-
   favorites: {
     title: "FAVORITES.TXT — NOTEPAD.EXE",
     noMedia: true,
@@ -230,7 +197,7 @@ const PROJECTS = {
 
 
   "more-work": {
-    title: "ET_CETERA.TXT — NOTEPAD.EXE",
+    title: "MORE.TXT — NOTEPAD.EXE",
     noMedia: true,
     sections: [
       {
@@ -258,6 +225,38 @@ const PROJECTS = {
               "Real-time pipelines from the data warehouse and DynamoDB into CloudWatch and S3 brought detection latency down from 8 days to under 24 hours.",
               "Reworking cross-region alert escalation took mean incident resolution from 7 days to 6 hours across distributed service teams.",
             ],
+          },
+        ],
+      },
+      {
+        isHtml: true,
+        variant: "panel",
+        panelHeadingStyle: "band",
+        collapsible: true,
+        rowBlocks: true,
+        rowStyle: "cards",
+        columns: 2,
+        heading: "‎ more projects",
+        blocks: [
+          {
+            tag: "hardware",
+            hideTag: true,
+            wide: true,
+            heading: "Suspension Load Logger",
+            body: "A data logger for Olin Baja that bolts onto one corner of the car and records the forces in its suspension arms while it drives: eight strain gauge and load cell channels, sampled together about 2,000 times a second onto a microSD card. It replaces the estimated loads the arms were designed around with measured ones.",
+            href: "https://github.com/rcyaon/suspension-board",
+          },
+          {
+            tag: "digital",
+            hideTag: true,
+            heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
+            body: "Architected a 5-stage pipelined RISC-V processor in Verilog, implementing full forwarding, hazard detection, and branch prediction (BTB). Validated in ModelSim and on a Cyclone V FPGA. Extended baseline with custom accumulate accelerator, achieving 4x cycle reduction (31 vs. 126 cycles).",
+          },
+          {
+            image: {
+              src: "images/rv1.png",
+              alt: "Processor datapath diagram",
+            },
           },
         ],
       },
@@ -1057,16 +1056,22 @@ function renderProjectPanelRowBlocks(blocks, style, path, columns) {
           `</ul>`
         : "";
       const tagHtml =
-        style === "cards" && tag
+        style === "cards" && tag && !b.hideTag
           ? `<span class="project-modal__row-tag">${escapeHtml(tag)}</span>`
           : "";
       return (
         `<li class="project-modal__row"` +
         (b.tag ? ` data-tag="${escapeAttr(String(b.tag).toLowerCase())}"` : "") +
         (b.company ? ` data-company="${escapeAttr(String(b.company).toLowerCase())}"` : "") +
+        (b.wide ? ` data-wide` : "") +
+        (b.hideTag ? ` data-no-tag` : "") +
         `>` +
         (b.company ? `<span class="project-modal__row-company">${escapeHtml(b.company)}</span>` : "") +
-        `<span class="project-modal__row-title">${escapeHtml(heading)}</span>` +
+        `<span class="project-modal__row-title">` +
+        (b.href
+          ? `<a href="${escapeAttr(b.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(heading)}</a>`
+          : escapeHtml(heading)) +
+        `</span>` +
         body +
         list +
         tagHtml +
@@ -1079,7 +1084,7 @@ function renderProjectPanelRowBlocks(blocks, style, path, columns) {
     (columns === 2 ? " project-modal__rows--two-col" : "");
   const rows = `<ul class="project-modal__rows${styleClass}">${items}</ul>`;
   if (style !== "files") return rows;
-  const dir = ["ET_CETERA", path]
+  const dir = ["MORE", path]
     .filter(Boolean)
     .map((x) => String(x).replace(/[\s\u200e]+/g, " ").trim().toUpperCase().replace(/ /g, "_"))
     .join("\\");
