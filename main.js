@@ -26,7 +26,7 @@ const MIN_H = 160;
  */
 
 /** Projects rendered with the terminal layout (wide panel, ls bands, tree rows). */
-const TERMINAL_PROJECTS = new Set(["more-work"]);
+const TERMINAL_PROJECTS = new Set(["experience", "more-work"]);
 
 /** @type {Record<string, ProjectDetail>} */
 const PROJECTS = {
@@ -121,7 +121,7 @@ const PROJECTS = {
       {
         imageFirst: true,
         image: {
-          src: "images/level_shifter_closeup.png",
+          src: "images/level_shifter_closeup.jpg",
           alt: "3D close-up render of the level shifter metal layers",
         },
         body:
@@ -153,6 +153,7 @@ const PROJECTS = {
         bulletsHeading: "Links",
         bullets: [
           "<a href='https://github.com/rcyaon/cmos-lna'>GitHub repository</a>",
+          "<a href='https://rcyaon.github.io/cmos-lna/'>Layout viewer</a>",
         ],
       },
     ],
@@ -167,27 +168,27 @@ const PROJECTS = {
         body: `<p><i>(In no order)</i></p>
 
 <p>Alice Rohrwacher, La Chimera</p>
-<img src="https://live-production.wcms.abc-cdn.net.au/958e48b10996283cef81d6fc724c8628?impolicy=wcms_crop_resize&cropH=1841&cropW=2762&xPos=656&yPos=319&width=862&height=575" width="300" style="border: 1px solid #6f6f6f;" alt="">
+<img src="images/films/la-chimera.jpg" loading="lazy" width="300" style="border: 1px solid #6f6f6f;" alt="Still from La Chimera">
 <br>
 
 <p>Ken Loach, Kes</p>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS53CcnHsUQzDJWp05O7_KhDtGPdBU5v9xFNQ4iN3SsUd-RJ65AsHXu_4l&s=10" width="300" style="border: 1px solid #6f6f6f;" alt=""> 
+<img src="images/films/kes.jpg" loading="lazy" width="300" style="border: 1px solid #6f6f6f;" alt="Still from Kes"> 
 <br>
 
 <p>Joseph Losey, Mr. Klein</p>
-<img src="https://criterion-production.s3.amazonaws.com/carousel-files/9PKdE5EHSiVAZekr3z4As2CdNlV7Enu5SWDZgoPm.jpeg" width="300" style="border: 1px solid #6f6f6f;" alt="">
+<img src="images/films/mr-klein.jpg" loading="lazy" width="300" style="border: 1px solid #6f6f6f;" alt="Still from Mr. Klein">
 <br>
 
 <p>Abbas Kiarostami, طعم گيلاس</p>
-<img src="https://d1nslcd7m2225b.cloudfront.net/Pictures/1024x536/4/7/1/1231471_taste-of-cherry-still.jpg" width="300" style="border: 1px solid #6f6f6f;" alt="">
+<img src="images/films/taste-of-cherry.jpg" loading="lazy" width="300" style="border: 1px solid #6f6f6f;" alt="Still from Taste of Cherry">
 <br>
 
 <p>Robert Bresson, Le Diable probablement</p>
-<img src ="https://cinemapublic.ca/wp-content/uploads/2025/06/le_diable_probablement_10.jpeg" width="300" style="border: 1px solid #6f6f6f;" alt="">
+<img src="images/films/le-diable-probablement.jpg" loading="lazy" width="300" style="border: 1px solid #6f6f6f;" alt="Still from Le Diable probablement">
 <br>
 
 <p>Matt Johnson, BlackBerry</p>
-<img src="https://www.hollywoodreporter.com/wp-content/uploads/2023/01/202310362_1-H-2023.jpg?w=1296&h=730&crop=1" width="300" style="border: 1px solid #6f6f6f;" alt="">
+<img src="images/films/blackberry.jpg" loading="lazy" width="300" style="border: 1px solid #6f6f6f;" alt="Still from BlackBerry">
 <br>
 
 `,
@@ -196,21 +197,20 @@ const PROJECTS = {
   },
 
 
-  "more-work": {
-    title: "MORE.TXT — NOTEPAD.EXE",
+  experience: {
+    title: "EXPERIENCE.TXT — NOTEPAD.EXE",
     noMedia: true,
     sections: [
       {
         variant: "panel",
         panelHeadingStyle: "band",
-        collapsible: true,
         rowBlocks: true,
-        rowStyle: "cards",
+        rowStyle: "tabs",
         heading: "‎ work experience",
         blocks: [
           {
             company: "GlobalFoundries",
-            heading: "Device Engineering Intern (summer 2026)",
+            heading: "Device Engineering Intern (Summer 2026)",
             bullets: [
               "Built test infrastructure for emerging memory (eNVM) on the 22FDX process: a test block that can send programmable write pulses or an analog bias to any bit line, word line or source line in the array, all through one configurable path.",
               "Compared candidate access transistors for MRAM and RRAM cells on 12LP, running Id-Vd sweeps to trade off how much write current each could deliver against how much it leaked.",
@@ -219,7 +219,7 @@ const PROJECTS = {
           },
           {
             company: "Amazon",
-            heading: "Software Engineering Intern (summer 2025)",
+            heading: "Software Engineering Intern (Summer 2025)",
             bullets: [
               "Designed and built OfferAnalytics, an AWS service (Lambda, Kotlin, DynamoDB) that flags unusual behavior in cross-border offers. New metrics plug in without changing the core service.",
               "Set up real-time pipelines from the data warehouse and DynamoDB into CloudWatch and S3, so problems now get caught in under 24 hours instead of 8 days.",
@@ -228,23 +228,22 @@ const PROJECTS = {
           },
         ],
       },
+    ],
+  },
+
+  "more-work": {
+    title: "MORE.TXT — NOTEPAD.EXE",
+    noMedia: true,
+    sections: [
       {
         isHtml: true,
         variant: "panel",
         panelHeadingStyle: "band",
-        collapsible: true,
         rowBlocks: true,
         rowStyle: "cards",
         columns: 2,
-        heading: "‎ more projects",
+        heading: "‎ digital design",
         blocks: [
-          {
-            tag: "hardware",
-            hideTag: true,
-            wide: true,
-            heading: "Suspension Load Logger",
-            body: "A data logger for Olin Baja that bolts onto one corner of the car and measures how hard the suspension arms actually get pushed around. I designed the board in KiCad: four layers, eight strain gauge channels all sampled at the same instant, and a super quiet power rail so the tiny sensor signals don't get lost in noise. It writes everything to an SD card about 2,000 times a second, so the team gets real numbers instead of guesses.",
-          },
           {
             tag: "digital",
             hideTag: true,
@@ -265,8 +264,7 @@ const PROJECTS = {
         panelHeadingStyle: "band",
         collapsible: true,
         rowBlocks: true,
-        rowStyle: "cards",
-        columns: 2,
+        rowStyle: "filter",
         heading: "‎ programs",
         blocks: [
           {
@@ -282,7 +280,7 @@ const PROJECTS = {
           {
             tag: "venture",
             heading: "Collide Capital Venture Scout",
-            body: "Sourcing and diligencing pre-seed through Series A deep tech startups while learning the ropes of early-stage investing. If you're building something, I'd love to chat!",
+            body: "Sourcing and diligencing pre-seed through Series A deep tech startups while learning the ropes of early-stage investing.",
           },
           {
             tag: "technical",
@@ -910,6 +908,7 @@ function openProjectModal(projectId) {
     "project-modal__body--more-work",
     TERMINAL_PROJECTS.has(projectId),
   );
+  mountTitleBarTabs(modal, titleEl, bodyEl);
 
   if (data.gallery && data.gallery.length > 0) {
     const galleryRoot = bodyEl.querySelector(".project-modal__gallery");
@@ -1019,7 +1018,162 @@ function renderProjectPanelTreeBlocks(blocks) {
  * (b.tag, or a trailing "(summer 2026)" in the heading); style "files" shows
  * the rows as a terminal directory listing under `path`.
  */
+/** Move a work-experience tab strip into the modal title bar, Notepad-style. */
+function unmountTitleBarTabs(modal) {
+  const header = modal.querySelector(".project-modal__header");
+  if (!header) return;
+  header.classList.remove("project-modal__header--tabs");
+  modal.querySelector(".project-modal__panel")?.classList.remove("project-modal__panel--tabs");
+  header.querySelectorAll(".exp-tabs__bar, .project-modal__app-name").forEach((el) => el.remove());
+  modal.querySelector(".project-modal__title")?.classList.remove("visually-hidden");
+}
+
+function mountTitleBarTabs(modal, titleEl, bodyEl) {
+  unmountTitleBarTabs(modal);
+  const bar = bodyEl.querySelector(".exp-tabs__bar");
+  const header = modal.querySelector(".project-modal__header");
+  if (!bar || !header) return;
+  header.classList.add("project-modal__header--tabs");
+  modal.querySelector(".project-modal__panel")?.classList.add("project-modal__panel--tabs");
+  titleEl.classList.add("visually-hidden");
+  titleEl.after(bar);
+  const app = document.createElement("span");
+  app.className = "project-modal__app-name";
+  app.setAttribute("aria-hidden", "true");
+  app.textContent = "NOTEPAD.EXE";
+  bar.after(app);
+}
+
+/** Programs: an inline "show: all / technical / ..." filter above a single list. */
+function renderFilterList(blocks) {
+  const items = blocks.filter((b) => b.heading && String(b.heading).trim());
+  const tags = [...new Set(items.map((b) => b.tag).filter(Boolean))];
+  const chip = (value, label, on) =>
+    `<button type="button" class="filter-list__chip" data-filter="${escapeAttr(value)}" aria-pressed="${on}">` +
+    `${escapeHtml(label)}</button>`;
+  // Reads as a sentence: "Show: All / Technical / Venture / Community"
+  const chips =
+    `<span class="filter-list__label" aria-hidden="true">Show:</span>` +
+    [chip("all", "all", true), ...tags.map((t) => chip(t, t, false))].join(
+      `<span class="filter-list__sep" aria-hidden="true">/</span>`,
+    );
+  const rows = items
+    .map(
+      (b) =>
+        `<li class="filter-list__row" data-tag="${escapeAttr(String(b.tag || "").toLowerCase())}">` +
+        `<span class="filter-list__name">${escapeHtml(String(b.heading).trim())}</span>` +
+        (b.body ? `<p class="filter-list__desc">${linkifyText(String(b.body).trim())}</p>` : "") +
+        `</li>`,
+    )
+    .join("");
+  return (
+    `<div class="filter-list">` +
+    `<div class="filter-list__chips" role="group" aria-label="Filter by category">${chips}</div>` +
+    `<ul class="filter-list__rows">${rows}</ul>` +
+    `</div>`
+  );
+}
+
+function wireFilterLists() {
+  document.addEventListener("click", (e) => {
+    const chip = e.target.closest?.(".filter-list__chip");
+    if (!chip) return;
+    const root = chip.closest(".filter-list");
+    const value = chip.dataset.filter;
+    root.querySelectorAll(".filter-list__chip").forEach((c) =>
+      c.setAttribute("aria-pressed", String(c === chip)),
+    );
+    root.querySelectorAll(".filter-list__row").forEach((row) => {
+      row.hidden = value !== "all" && row.dataset.tag !== value;
+    });
+  });
+}
+
+/** Work experience as old-Windows tabs: one company shown at a time. */
+let experienceTabsCount = 0;
+function renderExperienceTabs(blocks) {
+  const jobs = blocks.filter((b) => b.company && b.heading);
+  const uid = `exp-tabs-${++experienceTabsCount}`;
+  const tabs = jobs
+    .map((b, i) => {
+      const on = i === 0;
+      return (
+        `<button type="button" role="tab" class="exp-tabs__tab" id="${uid}-tab-${i}"` +
+        ` aria-controls="${uid}-panel-${i}" aria-selected="${on}" tabindex="${on ? 0 : -1}">` +
+        `${escapeHtml(b.company)}.txt</button>`
+      );
+    })
+    .join("");
+  const panels = jobs
+    .map((b, i) => {
+      let role = String(b.heading).trim();
+      let date = "";
+      const dated = role.match(/\s*\(([^)]*\d{4}[^)]*)\)$/);
+      if (dated) {
+        date = dated[1];
+        role = role.slice(0, dated.index);
+      }
+      const bullets = (b.bullets || []).filter((x) => x && String(x).trim());
+      return (
+        `<div role="tabpanel" class="exp-tabs__panel" id="${uid}-panel-${i}" aria-labelledby="${uid}-tab-${i}"` +
+        (i === 0 ? "" : " hidden") +
+        `>` +
+        `<div class="exp-tabs__head"><span class="exp-tabs__role">${escapeHtml(role)}</span>` +
+        (date ? `<span class="exp-tabs__date">${escapeHtml(date)}</span>` : "") +
+        `</div>` +
+        (bullets.length
+          ? `<ul class="exp-tabs__list">` +
+            bullets.map((x) => `<li>${linkifyText(String(x).trim())}</li>`).join("") +
+            `</ul>`
+          : "") +
+        `</div>`
+      );
+    })
+    .join("");
+  return (
+    `<div class="exp-tabs">` +
+    `<div class="exp-tabs__bar" role="tablist" aria-label="Work experience">${tabs}</div>` +
+    `<div class="exp-tabs__sheet">${panels}</div>` +
+    `</div>`
+  );
+}
+
+function selectExperienceTab(tab) {
+  const root = tab.closest('[role="tablist"]');
+  if (!root) return;
+  root.querySelectorAll(".exp-tabs__tab").forEach((t) => {
+    const on = t === tab;
+    t.setAttribute("aria-selected", String(on));
+    t.tabIndex = on ? 0 : -1;
+    const panel = document.getElementById(t.getAttribute("aria-controls"));
+    if (panel) panel.hidden = !on;
+  });
+}
+
+function wireExperienceTabs() {
+  document.addEventListener("click", (e) => {
+    const tab = e.target.closest?.(".exp-tabs__tab");
+    if (tab) selectExperienceTab(tab);
+  });
+  // Arrow keys move between tabs, like a real tab strip.
+  document.addEventListener("keydown", (e) => {
+    const tab = e.target.closest?.(".exp-tabs__tab");
+    if (!tab || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+    const all = [...tab.parentElement.querySelectorAll(".exp-tabs__tab")];
+    let i = all.indexOf(tab);
+    if (e.key === "ArrowLeft") i = (i - 1 + all.length) % all.length;
+    else if (e.key === "ArrowRight") i = (i + 1) % all.length;
+    else if (e.key === "Home") i = 0;
+    else i = all.length - 1;
+    e.preventDefault();
+    all[i].focus();
+    selectExperienceTab(all[i]);
+  });
+}
+
 function renderProjectPanelRowBlocks(blocks, style, path, columns) {
+  if (style === "tabs") return renderExperienceTabs(blocks);
+  if (style === "filter") return renderFilterList(blocks);
   const filtered = blocks.filter((b) => b.heading && String(b.heading).trim());
   if (filtered.length === 0) return "";
   const items = blocks
@@ -1036,7 +1190,7 @@ function renderProjectPanelRowBlocks(blocks, style, path, columns) {
       let heading = String(b.heading).trim();
       let tag = b.tag || "";
       const dated = heading.match(/\s*\(([^)]*\d{4}[^)]*)\)$/);
-      if (style === "cards" && !tag && dated) {
+      if ((style === "cards" || style === "timeline") && !tag && dated) {
         tag = dated[1];
         heading = heading.slice(0, dated.index);
       }
@@ -1055,7 +1209,7 @@ function renderProjectPanelRowBlocks(blocks, style, path, columns) {
           `</ul>`
         : "";
       const tagHtml =
-        style === "cards" && tag && !b.hideTag
+        (style === "cards" || style === "timeline") && tag && !b.hideTag
           ? `<span class="project-modal__row-tag">${escapeHtml(tag)}</span>`
           : "";
       return (
@@ -1609,6 +1763,7 @@ function closeProjectModal() {
   modalPanel?.classList.remove("project-modal__panel--gallery");
   modalPanel?.classList.remove("project-modal__panel--more-work");
   modalPanel?.classList.remove("project-modal__panel--wide");
+  unmountTitleBarTabs(modal);
   modal.hidden = true;
   document.body.classList.remove("modal-open");
   setBackgroundInert(false);
@@ -1899,6 +2054,8 @@ document.addEventListener("DOMContentLoaded", () => {
   wireLauncher();
   wireWindowFocus();
   wireProjectIcons();
+  wireExperienceTabs();
+  wireFilterLists();
   wireProjectModal();
   wireProjectOpeners();
   wireSkipLink();

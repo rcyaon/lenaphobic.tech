@@ -2544,3 +2544,296 @@ button:focus-visible,
 .project-modal__body--more-work .project-modal__row[data-tag][data-no-tag] .project-modal__row-title {
     padding-right: 0;
 }
+
+/* Work experience: each job is a file tab in the title bar, Notepad-style */
+.project-modal__header--tabs {
+    align-items: flex-end;
+    padding: 6px 8px 0;
+}
+
+.project-modal__header--tabs .project-modal__close {
+    align-self: center;
+    margin-bottom: 0;
+}
+
+.project-modal__header--tabs .exp-tabs__bar {
+    display: flex;
+    margin-bottom: -1px;
+}
+
+.project-modal__app-name {
+    flex: 1;
+    align-self: center;
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #6f6f6f;
+    white-space: nowrap;
+}
+
+.exp-tabs__tab {
+    margin: 0 -1px 0 0;
+    padding: 4px 12px 5px;
+    border: 1px solid #6f6f6f;
+    border-bottom: 0;
+    border-radius: 0;
+    background: #dcdcdc;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #6f6f6f;
+    cursor: pointer;
+}
+
+.exp-tabs__tab:hover {
+    background: #e8e8e8;
+    color: #1a1a1a;
+}
+
+/* Selected tab takes the body color and covers the bar's bottom border */
+.exp-tabs__tab[aria-selected="true"] {
+    position: relative;
+    z-index: 1;
+    background: #f3f3f3;
+    color: #1a1a1a;
+    padding-bottom: 6px;
+    cursor: default;
+}
+
+.exp-tabs__tab:focus-visible {
+    outline: 1px dotted #1a1a1a;
+    outline-offset: -4px;
+}
+
+/* The window title bar now names the section, so drop the in-body heading */
+.project-modal__experience-panel:has(.exp-tabs) > .project-modal__panel-heading,
+.project-modal__experience-panel:has(.exp-tabs) > :first-child:not(.project-modal__experience-panel-body) {
+    display: none;
+}
+
+.exp-tabs__head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.exp-tabs__role {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.exp-tabs__date {
+    color: #6f6f6f;
+    white-space: nowrap;
+}
+
+.exp-tabs__list {
+    margin: 0;
+    padding-left: 16px;
+}
+
+.exp-tabs__list li {
+    line-height: 1.75;
+}
+
+/* Title-bar tabs, lighter pass: same height as other title bars,
+   only the selected tab is outlined, app name sits quietly by the close button */
+.project-modal__header--tabs {
+    padding: 4px 8px 0;
+}
+
+.project-modal__header--tabs .exp-tabs__bar {
+    flex: 1;
+    gap: 2px;
+}
+
+.project-modal__header--tabs .exp-tabs__tab {
+    margin: 0;
+    padding: 3px 10px 4px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    background: none;
+    color: #8a8a8a;
+}
+
+.project-modal__header--tabs .exp-tabs__tab:hover {
+    background: none;
+    color: #1a1a1a;
+}
+
+.project-modal__header--tabs .exp-tabs__tab[aria-selected="true"] {
+    border-color: #6f6f6f;
+    background: #f3f3f3;
+    color: #1a1a1a;
+    padding-bottom: 5px;
+}
+
+.project-modal__header--tabs .project-modal__app-name {
+    flex: 0 0 auto;
+    align-self: center;
+    padding: 0 6px 0 0;
+    font-size: 11px;
+    font-weight: 500;
+    color: #9a9a9a;
+}
+
+/* Tabs fill the bar top to bottom (no gap above) */
+.project-modal__header--tabs {
+    padding: 0 8px 0 0;
+    align-items: stretch;
+}
+
+.project-modal__header--tabs .exp-tabs__bar {
+    gap: 0;
+}
+
+.project-modal__header--tabs .exp-tabs__tab {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px 7px;
+    border-top: 0;
+}
+
+/* First tab sits against the window's left edge; the window border stands in for its own */
+.project-modal__header--tabs .exp-tabs__tab:first-child {
+    border-left-color: transparent;
+}
+
+.project-modal__header--tabs .exp-tabs__tab[aria-selected="true"] {
+    border-top: 0;
+    padding-bottom: 8px;
+}
+
+.project-modal__header--tabs .project-modal__close,
+.project-modal__header--tabs .project-modal__app-name {
+    align-self: center;
+}
+
+/* Experience window is narrower than the other "more" style windows */
+.project-modal__panel.project-modal__panel--tabs {
+    width: min(560px, 100%);
+}
+
+/* Programs: inline "show: all / technical / venture / community" filter */
+.filter-list__chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 8px;
+    margin: 2px 0 12px;
+    font-size: 12px;
+}
+
+.filter-list__label {
+    color: #8a8a8a;
+}
+
+.filter-list__sep {
+    color: #1a1a1a;
+}
+
+.filter-list__chip {
+    margin: 0;
+    padding: 0 4px;
+    text-transform: capitalize;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    font: inherit;
+    color: #1a1a1a;
+    cursor: pointer;
+}
+
+.filter-list__chip:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.filter-list__chip[aria-pressed="true"] {
+    background: #1a1a1a;
+    color: #fff;
+    text-decoration: none;
+    cursor: default;
+}
+
+.filter-list__chip:focus-visible {
+    outline: 1px dotted #1a1a1a;
+    outline-offset: 2px;
+}
+
+.filter-list__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.filter-list__row {
+    padding: 7px 0;
+    border-bottom: 1px dashed #cfcfcf;
+}
+
+.filter-list__row:first-child {
+    padding-top: 0;
+}
+
+.filter-list__row:last-of-type {
+    border-bottom: 0;
+}
+
+.filter-list__row[hidden] {
+    display: none;
+}
+
+.filter-list__name {
+    display: block;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+.project-modal__body .filter-list__desc {
+    margin: 0;
+    color: #6f6f6f;
+    line-height: 1.6;
+}
+
+/* Dividers only between visible rows, so filtered lists have no stray lines or gaps */
+.filter-list__row,
+.filter-list__row:first-child,
+.filter-list__row:last-of-type {
+    padding: 0;
+    border: 0;
+}
+
+.filter-list__row:not([hidden]) ~ .filter-list__row:not([hidden]) {
+    margin-top: 7px;
+    padding-top: 7px;
+    border-top: 1px solid #d6d6d6;
+}
+
+/* Digital design card stays still on hover */
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-tag="digital"]:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    border-color: #d0d0d0;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Programs spacing: room around the filter and between rows */
+.filter-list__chips {
+    margin: 8px 0 16px;
+    gap: 0 6px;
+}
+
+.filter-list__row:not([hidden]) ~ .filter-list__row:not([hidden]) {
+    margin-top: 12px;
+    padding-top: 12px;
+}
+
+.project-modal__body .filter-list__desc {
+    margin-top: 2px;
+}
