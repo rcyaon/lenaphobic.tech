@@ -239,6 +239,7 @@ const PROJECTS = {
         isHtml: true,
         variant: "panel",
         panelHeadingStyle: "band",
+        collapsible: true,
         rowBlocks: true,
         rowStyle: "cards",
         columns: 2,
