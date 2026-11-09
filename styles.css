@@ -674,6 +674,11 @@ body {
     gap: var(--mw-gap);
 }
 
+/* Trees draw their own rhythm; a gap here would break the │ lines between rows. */
+.project-modal__body--more-work .project-modal__experience-panel-body--tree {
+    gap: 0;
+}
+
 .project-modal__body--more-work .project-modal__experience-block {
     display: flex;
     flex-direction: column;
@@ -766,6 +771,12 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    line-height: var(--tree-lh);
+}
+
+/* A program inside a category folder: bold, but not shouted like the folder. */
+.project-modal__tree-name {
+    font-weight: 600;
     line-height: var(--tree-lh);
 }
 
@@ -2836,4 +2847,98 @@ button:focus-visible,
 
 .project-modal__body .filter-list__desc {
     margin-top: 2px;
+}
+
+/* Experience: the company band leads, written in normal case ("GlobalFoundries"). */
+.project-modal__body[data-project="experience"] .project-modal__panel-heading--band {
+    font-size: 12px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.project-modal__body[data-project="experience"] .project-modal__tree-ht {
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* Programs photo: sits under the list with no rule above it. */
+.project-modal__experience-panel-body > .project-modal__media--section {
+    margin: 6px 0 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+/* Breathing room after each description. Padding (not margin) keeps the row
+   tall, so the │ lines stretch through it instead of breaking. */
+.project-modal__tree-row p,
+.project-modal__tree-row--solo .project-modal__tree-ht {
+    padding-bottom: 10px;
+}
+
+/* ├ and └ glyphs don't reach the top of their tall line box; bridge that
+   sliver so the stroke from the entry above meets them. */
+.project-modal__tree-branch::after {
+    content: "";
+    position: absolute;
+    left: var(--tree-stroke-x);
+    top: 0;
+    height: calc(0.5em * var(--tree-lh));
+    width: 1px;
+    background-color: currentColor;
+}
+
+/* A ├ entry's stroke runs the full row, top to bottom. */
+.project-modal__tree-branch:not(.project-modal__tree-branch--end)::after {
+    height: auto;
+    bottom: 0;
+}
+
+/* Programs as two columns: name | description rows. */
+.text-cols__list {
+    display: grid;
+    grid-template-columns: minmax(0, 15em) minmax(0, 1fr);
+    column-gap: 20px;
+    row-gap: 10px;
+    margin: 0;
+}
+
+.text-cols__list dt {
+    font-weight: 600;
+}
+
+.text-cols__list dd {
+    margin: 0;
+    color: #5a5a5a;
+}
+
+/* Phone: description drops under its name. */
+@media (max-width: 600px) {
+    .text-cols__list {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 2px;
+    }
+
+    .text-cols__list dd {
+        margin-bottom: 10px;
+    }
+}
+
+/* Role on the same line as the company band, in normal case. */
+.project-modal__band-sub {
+    text-transform: none;
+    letter-spacing: 0;
+    white-space: pre-wrap;
+}
+
+.project-modal__body--more-work .project-modal__panel-heading--band:has(.project-modal__band-sub) {
+    display: block;
+}
+
+/* Digital design: the TinyRV1 text sits plain beside its diagram, no card box. */
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-tag="digital"],
+.project-modal__body--more-work .project-modal__rows--cards .project-modal__row[data-tag="digital"]:hover {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    padding: 0;
 }

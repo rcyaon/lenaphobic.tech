@@ -198,18 +198,16 @@ const PROJECTS = {
 
 
   experience: {
-    title: "EXPERIENCE.TXT — NOTEPAD.EXE",
+    title: "TERMINAL.EXE",
     noMedia: true,
     sections: [
       {
         variant: "panel",
         panelHeadingStyle: "band",
-        rowBlocks: true,
-        rowStyle: "tabs",
-        heading: "‎ work experience",
+        treeBlocks: "flat",
+        heading: "‎ GlobalFoundries",
         blocks: [
           {
-            company: "GlobalFoundries",
             heading: "Device Engineering Intern (Summer 2026)",
             bullets: [
               "Built test infrastructure for emerging memory (eNVM) on the 22FDX process: a test block that can send programmable write pulses or an analog bias to any bit line, word line or source line in the array, all through one configurable path.",
@@ -217,8 +215,15 @@ const PROJECTS = {
               "Wrote the handoff doc so the work could keep going after I left. The platform is now headed to tapeout and being extended to more memory technologies.",
             ],
           },
+        ],
+      },
+      {
+        variant: "panel",
+        panelHeadingStyle: "band",
+        treeBlocks: "flat",
+        heading: "‎ Amazon",
+        blocks: [
           {
-            company: "Amazon",
             heading: "Software Engineering Intern (Summer 2025)",
             bullets: [
               "Designed and built OfferAnalytics, an AWS service (Lambda, Kotlin, DynamoDB) that flags unusual behavior in cross-border offers. New metrics plug in without changing the core service.",
@@ -264,8 +269,7 @@ const PROJECTS = {
         variant: "panel",
         panelHeadingStyle: "band",
         collapsible: true,
-        rowBlocks: true,
-        rowStyle: "filter",
+        textColumns: true,
         heading: "‎ programs",
         blocks: [
           {
@@ -909,6 +913,7 @@ function openProjectModal(projectId) {
     "project-modal__body--more-work",
     TERMINAL_PROJECTS.has(projectId),
   );
+  bodyEl.dataset.project = projectId;
   mountTitleBarTabs(modal, titleEl, bodyEl);
 
   if (data.gallery && data.gallery.length > 0) {
@@ -990,8 +995,9 @@ function renderProjectPanelTreeBlocks(blocks) {
           if (item && String(item).trim()) lines.push(String(item).trim());
         });
       }
+      // An entry with no description still needs the space other entries get after their text.
       let html =
-        `<div class="project-modal__tree-row">` +
+        `<div class="project-modal__tree-row${lines.length ? "" : " project-modal__tree-row--solo"}">` +
         renderTreeBranch(blockIsLast) +
         `<span class="project-modal__tree-ht">${escapeHtml(b.heading)}</span>` +
         `</div>`;
@@ -1011,6 +1017,53 @@ function renderProjectPanelTreeBlocks(blocks) {
       return html;
     })
     .join("");
+}
+
+/**
+ * Nested `tree` output. Each node is { kind: "dir" | "name" | "text", ... }.
+ * `trail` holds, per ancestor level, whether that ancestor still has siblings below it
+ * (so its column keeps a │ bar).
+ */
+function renderTreeNodes(nodes, trail = []) {
+  return nodes
+    .map((n, i) => {
+      const isLast = i === nodes.length - 1;
+      const gutters = trail
+        .map((bar) =>
+          `<span class="project-modal__tree-gutter${bar ? " project-modal__tree-gutter--bar" : ""}"></span>`,
+        )
+        .join("");
+      let content;
+      if (n.kind === "dir") {
+        content = `<span class="project-modal__tree-ht">${escapeHtml(n.label)}/</span>`;
+      } else if (n.kind === "name") {
+        content = `<span class="project-modal__tree-name">${escapeHtml(n.label)}</span>`;
+      } else {
+        content = `<p>${linkifyText(n.label)}</p>`;
+      }
+      const row =
+        `<div class="project-modal__tree-row">${gutters}${renderTreeBranch(isLast)}${content}</div>`;
+      return row + (n.children?.length ? renderTreeNodes(n.children, [...trail, !isLast]) : "");
+    })
+    .join("");
+}
+
+/** Programs as two columns: name on the left, description on the right. */
+function renderProjectPanelTextColumns(blocks) {
+  const items = blocks.filter((b) => b.heading && String(b.heading).trim());
+  const images = blocks.filter((b) => !b.heading && b.image).map((b) => b.image);
+  const list =
+    `<dl class="text-cols__list">` +
+    items
+      .map(
+        (b) =>
+          `<dt>${escapeHtml(String(b.heading).trim())}</dt>` +
+          `<dd>${b.body && String(b.body).trim() ? linkifyText(String(b.body).trim()) : ""}</dd>`,
+      )
+      .join("") +
+    `</dl>`;
+  // Picture-only blocks show full width under the list.
+  return list + images.map((img) => renderSectionImageBlock(img)).join("");
 }
 
 /** Blocks as a list of rows (masonjwang.com "some things i've built"): bold title, muted description, dashed separators. */
@@ -1309,8 +1362,24 @@ function renderProjectPanel(s) {
     s.panelHeadingStyle === "band"
       ? "project-modal__panel-heading project-modal__panel-heading--band"
       : "project-modal__panel-heading";
-  const title = `<h3 class="${headingClass}">${escapeHtml(label)}</h3>`;
-  const bodyInner = s.rowBlocks
+  // treeBlocks "flat": the first block's heading joins the band line
+  // ("GlobalFoundries, Device Engineering Intern (Summer 2026)") and its bullets branch off it.
+  const flat = s.treeBlocks === "flat" ? s.blocks[0] : null;
+  const title =
+    `<h3 class="${headingClass}">${escapeHtml(label)}` +
+    (flat?.heading
+      ? `<span class="project-modal__band-sub">, ${escapeHtml(String(flat.heading).trim())}</span>`
+      : "") +
+    `</h3>`;
+  const bodyInner = flat
+    ? renderTreeNodes(
+        [flat.body, ...(flat.bullets || [])]
+          .filter((x) => x && String(x).trim())
+          .map((x) => ({ kind: "text", label: String(x).trim() })),
+      )
+    : s.textColumns
+    ? renderProjectPanelTextColumns(s.blocks)
+    : s.rowBlocks
     ? renderProjectPanelRowBlocks(s.blocks, s.rowStyle, label, s.columns)
     : s.treeBlocks
       ? renderProjectPanelTreeBlocks(s.blocks)
