@@ -249,7 +249,7 @@ const PROJECTS = {
           {
             isHtml: true,
             body: `<div class="more-note">
-<p>Most of my schools didn’t offer coding, so I learned by taking things apart. Fixing my sister’s toys turned into wiring circuits, then a hardware hacking club, then teaching PCB design, JavaScript, and CNC workshops to K-12 students with <a href="https://daysofservice.hackclub.com/" target="_blank" rel="noopener noreferrer">Hack Club<span class="visually-hidden"> (opens in a new tab)</span></a>.</p>
+<p>I got into electronics the hard way: open it up, figure out why it works, try to make it do something else. That turned into wiring circuits, then teaching PCB design, JavaScript, and CNC workshops to K-12 students with <a href="https://daysofservice.hackclub.com/" target="_blank" rel="noopener noreferrer">Hack Club<span class="visually-hidden"> (opens in a new tab)</span></a>.</p>
 <p>In high school I built <a href="https://csr.samsung.com/en/story/inspiring-journeys/together-we-can-keep-our-school-safe" target="_blank" rel="noopener noreferrer">Pathfinder<span class="visually-hidden"> (opens in a new tab)</span></a>, a mesh of light- and sound-sensing devices that guides crowds to safety during emergencies. CNET covered it. My team won Samsung Solve for Tomorrow nationally three times, the only school ever to win more than once, for over $300k in prizes. At MIT MITES I built an autonomous soccer robot.</p>
 <p>College took me down to the chip level. I built TinyRV1, a 5-stage pipelined RISC-V processor in Verilog, ran it on a Cyclone V FPGA, and added an accumulate accelerator that cut a benchmark from 126 cycles to 31.</p>
 <img class="more-note__img" src="images/rv1.png" alt="TinyRV1 pipelined datapath diagram">
