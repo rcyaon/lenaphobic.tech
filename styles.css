@@ -1362,7 +1362,6 @@ body {
 .about-webring a:hover {
     color: #1a1a1a;
     text-decoration: underline;
-    text-underline-offset: 3px;
 }
 
 .work-entry__title {
@@ -2942,3 +2941,69 @@ button:focus-visible,
     box-shadow: none;
     padding: 0;
 }
+
+/* ── MORE.TXT ─────────────────────────────────────────────────────────────
+   "previously" is a short note in plain paragraphs, set like the about
+   window: no bold, no lists, just text and a few underlined links. */
+.project-modal__body--more-work .more-note p {
+    margin: 0 0 1.1em;
+    line-height: 1.75;
+}
+
+.project-modal__body--more-work .more-note p:last-child {
+    margin-bottom: 0;
+}
+
+.project-modal__body--more-work .more-note__img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 0 1.1em;
+    border: 1px solid #6f6f6f;
+    box-sizing: border-box;
+}
+
+.project-modal__body--more-work .more-note a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.project-modal__body--more-work .more-note a:hover {
+    color: #6f6f6f;
+}
+/* ── end MORE.TXT ── */
+
+/* ── JOB HEADINGS ─────────────────────────────────────────────────────────
+   "work experience" in MORE.TXT: company in bold, role in regular weight,
+   dates set apart in grey on the right, so a narrow window never breaks
+   the line mid-date. */
+.project-modal__body.project-modal__body--more-work .project-modal__panel-heading--band:has(.project-modal__band-who) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 2ch;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.project-modal__body--more-work .project-modal__band-sub {
+    font-weight: 400;
+}
+
+.project-modal__body--more-work .project-modal__band-date {
+    margin-left: auto;
+    color: #5a5a5a;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    /* Phone: the dates get their own line under the role. */
+    .project-modal__body--more-work .project-modal__band-date {
+        flex-basis: 100%;
+        margin-left: 0;
+    }
+}
+/* ── end JOB HEADINGS ── */

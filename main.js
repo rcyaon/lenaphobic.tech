@@ -197,188 +197,65 @@ const PROJECTS = {
   },
 
 
-  experience: {
-    title: "TERMINAL.EXE",
-    noMedia: true,
-    sections: [
-      {
-        variant: "panel",
-        panelHeadingStyle: "band",
-        treeBlocks: "flat",
-        heading: "‎ GlobalFoundries",
-        blocks: [
-          {
-            heading: "Device Engineering Intern (Summer 2026)",
-            bullets: [
-              "Built test infrastructure for emerging memory (eNVM) on the 22FDX process: a test block that can send programmable write pulses or an analog bias to any bit line, word line or source line in the array, all through one configurable path.",
-              "Compared candidate access transistors for MRAM and RRAM cells on 12LP, running Id-Vd sweeps to trade off how much write current each could deliver against how much it leaked.",
-              "Wrote the handoff doc so the work could keep going after I left. The platform is now headed to tapeout and being extended to more memory technologies.",
-            ],
-          },
-        ],
-      },
-      {
-        variant: "panel",
-        panelHeadingStyle: "band",
-        treeBlocks: "flat",
-        heading: "‎ Amazon",
-        blocks: [
-          {
-            heading: "Software Engineering Intern (Summer 2025)",
-            bullets: [
-              "Designed and built OfferAnalytics, an AWS service (Lambda, Kotlin, DynamoDB) that flags unusual behavior in cross-border offers. New metrics plug in without changing the core service.",
-              "Set up real-time pipelines from the data warehouse and DynamoDB into CloudWatch and S3, so problems now get caught in under 24 hours instead of 8 days.",
-              "Reworked how alerts escalate across regions, cutting the average time to resolve an incident from 7 days to 6 hours across distributed service teams.",
-            ],
-          },
-        ],
-      },
-    ],
-  },
-
   "more-work": {
     title: "MORE.TXT — NOTEPAD.EXE",
     noMedia: true,
     sections: [
       {
-        isHtml: true,
-        variant: "panel",
-        panelHeadingStyle: "band",
-        collapsible: true,
-        rowBlocks: true,
-        rowStyle: "cards",
-        columns: 2,
-        heading: "‎ digital design",
-        blocks: [
+        // Dropdown with the jobs that used to be the "experience" folder.
+        variant: "group",
+        heading: "work experience",
+        sections: [
           {
-            tag: "digital",
-            hideTag: true,
-            heading: "5-Stage Pipelined RISC-V Processor (TinyRV1)",
-            body: "Architected a 5-stage pipelined RISC-V processor in Verilog, implementing full forwarding, hazard detection, and branch prediction (BTB). Validated in ModelSim and on a Cyclone V FPGA. Extended baseline with custom accumulate accelerator, achieving 4x cycle reduction (31 vs. 126 cycles).",
-          },
-          {
-            image: {
-              src: "images/rv1.png",
-              alt: "Processor datapath diagram",
-            },
-          },
-        ],
-      },
-      {
-        isHtml: true,
-        variant: "panel",
-        panelHeadingStyle: "band",
-        collapsible: true,
-        textColumns: true,
-        heading: "‎ programs",
-        blocks: [
-          {
-            tag: "technical",
-            heading: "MIT Introduction to Technology, Engineering, and Science (MITES)",
-            body: "Built autonomous Arduino robots and wrote about biomimicry in train engineering. ",
-          },
-          {
-            tag: "venture",
-            heading: "Dorm Room Fund Blueprint Investor Track",
-            body: "Selected as 1 of 15 nationwide for a fellowship on evaluating early-stage startups from an investor's lens.",
-          },
-          {
-            tag: "venture",
-            heading: "Collide Capital Venture Scout",
-            body: "Sourcing and diligencing pre-seed through Series A deep tech startups while learning the ropes of early-stage investing.",
-          },
-          {
-            tag: "technical",
-            heading: "SureStart Deep Learning Program",
-            body: "Deep learning fundamentals: neural networks, CNNs, GANs, optimization, and model evaluation with Python and TensorFlow.",
-          },
-          {
-            tag: "technical",
-            heading: "MATLAB Ambassador",
-            body: "Paid work delivering hands-on MATLAB and Simulink workshops while evaluating pre-release features.",
-          },
-          {
-            tag: "venture",
-            heading: "Girls Into VC Externship",
-            body: "Externed with the CEO of upskill (\"the horizontal people-search layer for agents\") doing market research and helping out with client hiring work.",
-          },
-          {
-            tag: "community",
-            heading: "Hackathon Organizing",
-            body: "Ran PCB design, JavaScript, and CNC workshops for K-12 students at FUTO Austin and Amazon Seattle through <a href='https://daysofservice.hackclub.com/'>Hack Club</a>, and led logistics for <a href=\"https://www.bigredhacks.com/\">BigRed//Hacks</a>.",
-          },
-          {
-            image: {
-              src: "images/blot.JPG",
-              alt: "Students' drawing machines at a Hack Club workshop",
-            },
-          },
-        ],
-      },
-      {
-        isHtml: true,
-        variant: "panel",
-        panelHeadingStyle: "band",
-        collapsible: true,
-        treeBlocks: true,
-        heading: `‎ Awards`,
-        blocks: [
-          {
-            heading: "Samsung Solve for Tomorrow National Winner",
-            body: "Built Pathfinder, a public safety system that uses a mesh network of light and sound-sensing devices to guide crowds during emergencies. Won $100k, featured on CNET. Returned as an alumna to mentor teams building accessibility tech.",
-          },
-          {
-            heading: "LyondellBasell Cybersecurity Challenge National Winner",
-            body: "Awarded $1,000. Solved CTF-style problems with Burp Suite, Wireshark, Nmap, Metasploit, and SQLmap.",
-          },
-          {
-            heading:
-              "Most Nostalgic Hack at Hack Club's Leadership Summit in SF",
-          },
-          {
-            heading: "Societal Impact and Hardware Winner at YHack",
-            bullets: [
-              "Built Canary, a real-time mine hazard detector using a Raspberry Pi, gas sensors, and depth cameras. Placed 3rd in Societal Impact and 4th in Hardware out of 700+ participants.",
+            variant: "panel",
+            panelHeadingStyle: "band",
+            treeBlocks: "flat",
+            heading: "‎ GlobalFoundries",
+            blocks: [
+              {
+                heading: "Device Engineering Intern (Summer 2026)",
+                bullets: [
+                  "Built test infrastructure for emerging memory (eNVM) on the 22FDX process: a test block that can send programmable write pulses or an analog bias to any bit line, word line or source line in the array, all through one configurable path.",
+                  "Compared candidate access transistors for MRAM and RRAM cells on 12LP, running Id-Vd sweeps to trade off how much write current each could deliver against how much it leaked.",
+                  "Wrote the handoff doc so the work could keep going after I left. The platform is now headed to tapeout and being extended to more memory technologies.",
+                ],
+              },
             ],
           },
           {
-            heading: "$500 GripTape Grant",
-            bullets: [
-              "ML race-strategy project using synthetic sensor data and 3D-printed model cars.",
+            variant: "panel",
+            panelHeadingStyle: "band",
+            treeBlocks: "flat",
+            heading: "‎ Amazon",
+            blocks: [
+              {
+                heading: "Software Engineering Intern (Summer 2025)",
+                bullets: [
+                  "Designed and built OfferAnalytics, an AWS service (Lambda, Kotlin, DynamoDB) that flags unusual behavior in cross-border offers. New metrics plug in without changing the core service.",
+                  "Set up real-time pipelines from the data warehouse and DynamoDB into CloudWatch and S3, so problems now get caught in under 24 hours instead of 8 days.",
+                  "Reworked how alerts escalate across regions, cutting the average time to resolve an incident from 7 days to 6 hours across distributed service teams.",
+                ],
+              },
             ],
           },
         ],
       },
       {
-        variant: "panel",
-        panelHeadingStyle: "band",
-        collapsible: true,
-        treeBlocks: true,
-        heading: "‎ scholarships",
-        blocks: [
+        // Dropdown with a short note in plain paragraphs.
+        variant: "group",
+        heading: "previously",
+        count: "",
+        sections: [
           {
-            heading: "ASML Innovators Scholarship",
-            body: "1 of 20 students nationwide awarded $5,000.",
-          },
-          {
-            heading: "Google Scholar",
-            body: "Awarded the Google Generation Scholarship as 1 of 50 recipients in North America. Alumna of Code Next Connect, Google's creative coding program: learned algorithmic composition and audio synthesis in JavaScript, taught by Google engineers.",
-          },
-          {
-            heading: "Amazon Future Engineer",
-            body: "Awarded $40,000 + SDE internship @ Amazon.",
-          },
-          {
-            heading: "CrowdStrike NextGen Scholarship",
-            body: "1 of 8 nationwide awarded $10,000.",
-          },
-          {
-            heading: "Stantec Equity and Diversity Scholarship",
-            body: "$4,500 + EE internship.",
-          },
-          {
-            heading: "Thrive Scholar",
-            body: "6-year college and career mentorship program. Within the cohort, selected by Citadel and Deloitte as a scholarship recipient.",
+            isHtml: true,
+            body: `<div class="more-note">
+<p>Most of my schools didn’t offer coding, so I learned by taking things apart. Fixing my sister’s toys turned into wiring circuits, then a hardware hacking club, then teaching PCB design, JavaScript, and CNC workshops to K-12 students with <a href="https://daysofservice.hackclub.com/" target="_blank" rel="noopener noreferrer">Hack Club<span class="visually-hidden"> (opens in a new tab)</span></a>.</p>
+<p>In high school I built <a href="https://csr.samsung.com/en/story/inspiring-journeys/together-we-can-keep-our-school-safe" target="_blank" rel="noopener noreferrer">Pathfinder<span class="visually-hidden"> (opens in a new tab)</span></a>, a mesh of light- and sound-sensing devices that guides crowds to safety during emergencies. CNET covered it. My team won Samsung Solve for Tomorrow nationally three times, the only school ever to win more than once, for over $300k in prizes. At MIT MITES I built an autonomous soccer robot.</p>
+<p>College took me down to the chip level. I built TinyRV1, a 5-stage pipelined RISC-V processor in Verilog, ran it on a Cyclone V FPGA, and added an accumulate accelerator that cut a benchmark from 126 cycles to 31.</p>
+<img class="more-note__img" src="images/rv1.png" alt="TinyRV1 pipelined datapath diagram">
+<p>Building chips made me curious about the other side of hardware: who gets funded, and why. I was 1&nbsp;of&nbsp;15 in Dorm Room Fund’s Blueprint investor track and externed for the CEO of upskill through Girls in VC. I’m most drawn to American Dynamism: companies rebuilding the chips, factories, and supply chains the country runs on.</p>
+<p>Along the way: ASML Innovators Scholar (1&nbsp;of&nbsp;20), CrowdStrike NextGen Scholar (1&nbsp;of&nbsp;8), Google Generation Scholar (1&nbsp;of&nbsp;50 in North America), and Amazon Future Engineer.</p>
+</div>`,
           },
         ],
       },
@@ -1331,18 +1208,20 @@ function renderSectionGroup(s, splitSideImages) {
     "project-modal__panel-heading project-modal__panel-heading--band",
     label,
     `<div class="project-modal__group-body">${inner}</div>`,
-    `(${(s.sections || []).length})`,
+    // `count: ""` hides the count; `open: true` starts the dropdown open.
+    s.count ?? `(${(s.sections || []).length})`,
+    s.open === true,
   );
 }
 
 /** Panel whose band heading is a toggle; its contents start hidden. */
 /** `count` is shown in gray after the label, e.g. "(2)" or "5 file(s)". */
-function renderCollapsiblePanel(headingClass, label, contentHtml, count) {
+function renderCollapsiblePanel(headingClass, label, contentHtml, count, open = false) {
   const lead = label.match(/^[\s\u200e]*/)[0];
   const text = label.slice(lead.length);
   return (
     `<div class="project-modal__experience-panel project-modal__experience-panel--collapsible">` +
-    `<details class="project-modal__panel-details">` +
+    `<details class="project-modal__panel-details"${open ? " open" : ""}>` +
     `<summary class="${headingClass} project-modal__panel-toggle">${escapeHtml(lead)}` +
     `<span class="project-modal__panel-toggle-text">${escapeHtml(text)}</span>` +
     (count ? `<span class="project-modal__panel-count">${escapeHtml(count)}</span>` : "") +
@@ -1365,12 +1244,19 @@ function renderProjectPanel(s) {
   // treeBlocks "flat": the first block's heading joins the band line
   // ("GlobalFoundries, Device Engineering Intern (Summer 2026)") and its bullets branch off it.
   const flat = s.treeBlocks === "flat" ? s.blocks[0] : null;
-  const title =
-    `<h3 class="${headingClass}">${escapeHtml(label)}` +
-    (flat?.heading
-      ? `<span class="project-modal__band-sub">, ${escapeHtml(String(flat.heading).trim())}</span>`
-      : "") +
-    `</h3>`;
+  // A trailing "(Summer 2026)" on the role becomes its own date, set apart.
+  const role = flat?.heading ? String(flat.heading).trim() : "";
+  const dated = role.match(/\s*\(([^)]*\d{4}[^)]*)\)$/);
+  const title = flat
+    ? `<h3 class="${headingClass}">` +
+      `<span class="project-modal__band-who">${escapeHtml(label.replace(/^[\s‎]+/, ""))}` +
+      (role
+        ? `<span class="project-modal__band-sub">, ${escapeHtml(dated ? role.slice(0, dated.index) : role)}</span>`
+        : "") +
+      `</span>` +
+      (dated ? `<span class="project-modal__band-date">${escapeHtml(dated[1])}</span>` : "") +
+      `</h3>`
+    : `<h3 class="${headingClass}">${escapeHtml(label)}</h3>`;
   const bodyInner = flat
     ? renderTreeNodes(
         [flat.body, ...(flat.bullets || [])]
@@ -1410,6 +1296,7 @@ function renderProjectPanel(s) {
     `</div>`
   );
 }
+
 
 function renderProjectSection(s) {
   if (s.variant === "panel") {

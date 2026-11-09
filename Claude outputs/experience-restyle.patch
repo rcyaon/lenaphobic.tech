@@ -1,0 +1,68 @@
+diff --git a/main.js b/main.js
+index b5ae143..9d3851e 100644
+--- a/main.js
++++ b/main.js
+@@ -1295,12 +1295,19 @@ function renderProjectPanel(s) {
+   // treeBlocks "flat": the first block's heading joins the band line
+   // ("GlobalFoundries, Device Engineering Intern (Summer 2026)") and its bullets branch off it.
+   const flat = s.treeBlocks === "flat" ? s.blocks[0] : null;
+-  const title =
+-    `<h3 class="${headingClass}">${escapeHtml(label)}` +
+-    (flat?.heading
+-      ? `<span class="project-modal__band-sub">, ${escapeHtml(String(flat.heading).trim())}</span>`
+-      : "") +
+-    `</h3>`;
++  // A trailing "(Summer 2026)" on the role becomes its own date, set apart.
++  const role = flat?.heading ? String(flat.heading).trim() : "";
++  const dated = role.match(/\s*\(([^)]*\d{4}[^)]*)\)$/);
++  const title = flat
++    ? `<h3 class="${headingClass}">` +
++      `<span class="project-modal__band-who">${escapeHtml(label.replace(/^[\s‎]+/, ""))}` +
++      (role
++        ? `<span class="project-modal__band-sub">, ${escapeHtml(dated ? role.slice(0, dated.index) : role)}</span>`
++        : "") +
++      `</span>` +
++      (dated ? `<span class="project-modal__band-date">${escapeHtml(dated[1])}</span>` : "") +
++      `</h3>`
++    : `<h3 class="${headingClass}">${escapeHtml(label)}</h3>`;
+   const bodyInner = flat
+     ? renderTreeNodes(
+         [flat.body, ...(flat.bullets || [])]
+diff --git a/styles.css b/styles.css
+index 6ad40d8..a004872 100644
+--- a/styles.css
++++ b/styles.css
+@@ -3046,3 +3046,33 @@ button:focus-visible,
+     }
+ }
+ /* ── end MORE.TXT ── */
++
++/* ── TERMINAL.EXE ─────────────────────────────────────────────────────────
++   Job headings: company in bold, role in regular weight, dates set apart in
++   grey on the right, so a narrow window never breaks the line mid-date. */
++.project-modal__body[data-project="experience"] .project-modal__experience-panel .project-modal__panel-heading--band {
++    display: flex;
++    flex-wrap: wrap;
++    align-items: baseline;
++    column-gap: 2ch;
++}
++
++.project-modal__body[data-project="experience"] .project-modal__band-sub {
++    font-weight: 400;
++}
++
++.project-modal__body[data-project="experience"] .project-modal__band-date {
++    margin-left: auto;
++    color: #5a5a5a;
++    font-weight: 400;
++    white-space: nowrap;
++}
++
++@media (max-width: 600px) {
++    /* Phone: the dates get their own line under the role. */
++    .project-modal__body[data-project="experience"] .project-modal__band-date {
++        flex-basis: 100%;
++        margin-left: 0;
++    }
++}
++/* ── end TERMINAL.EXE ── */
